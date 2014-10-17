@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+{% for post in posts %}
+	<article class="entry">
+		<div class="entry-header">
+			<h2><a href="{{ root_url }}/posts/{{ post.slug }}">{{ post.title }}</a></h2>
+			<span class="timestamp">{{ post.pubdate.strftime('%Y-%m-%d') }}</span>
+		</div>
+		<div class="entry-body">{{ post.body }}</div>
+	</article>
+{% endfor %}
+<div class="archive-link"><a href="{{ root_url }}/archive">Older posts - archives</a></div>
+{% endblock %}

@@ -1,0 +1,177 @@
+* {
+	box-sizing: border-box;
+}
+html {
+	font-family: 'PT Sans', 'Calibri', 'Trebuchet MS', 'Arial', 'Tahoma', 'sans-serif';
+	font-size: 14px;
+	line-height: 1.6em;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+body {
+	background-image:url('bg.png');
+	background-repeat:repeat-y;
+	background-attachment:scroll;
+	background-position:center;
+}
+a {
+	color: #000;
+	text-decoration: underline;
+}
+a:hover, .site-sidebar ul li a:hover {
+	color: #036; /* #930 or #036 */
+}
+img {
+	max-width: 100%;
+}
+
+.site-container {
+	width: 800px;
+	margin: auto;
+}
+.site-header {
+	border-bottom: 1px dashed #ccc;
+	margin-top: -20px;
+	padding-top: 20px;
+	background: #fff;
+}
+.site-sidebar {
+	float: left;
+	width: 180px;
+	margin: 10px 0px 10px 0px;
+}
+.site-main {
+	float: right;
+	margin: 10px 0px 10px 0px;
+	padding-left: 10px;
+	width: 609px;
+}
+.site-footer {
+	border-top: 1px dashed #ccc;
+	clear: both;
+	padding-top: 5px;
+	text-align: center;
+}
+
+/* Sidebar header */
+.site-sidebar h3 {
+	font-size: 16px;
+	font-weight: bold;
+	margin: 20px 0 18px;
+}
+.site-sidebar ul {
+	list-style: none;
+	margin: -15px 0 10px;
+	padding: 0;
+}
+.site-sidebar ul li a {
+	color: #666;
+	text-decoration: none;
+}
+.site-sidebar .aboutme p {
+	margin-right: 15px;
+}
+
+.errormsg {
+	width: 300px;
+	margin: auto;
+}
+.errormsg p {
+	float: left;
+	color: #c00;
+	font-size: 20px;
+	text-align: center;
+	margin-top: 16px;
+	margin-left: 20px;
+}
+img.warning {
+	float: left;
+}
+
+.site-main h1 {
+	font-size: 22px;
+	text-align: center;
+}
+.site-main h2 {
+	font-size: 18px;
+	margin: 35px 0px 10px 0px;
+	padding: 0px;
+}
+.site-main ul {
+	margin: -5px 0px 0px -10px;
+	list-style-type: circle;
+}
+.site-main ul li {
+	margin-bottom: 8px;
+}
+.site-main .entry-header {
+	
+}
+.site-main .entry-header h2 {
+	float: left;
+	font-size: 18px;
+	margin: 5px 0px 10px 25px;
+}
+.site-main .entry-header span.timestamp {
+	float: right;
+	height: 22px;
+	vertical-align: middle;
+	margin: 7px 50px 8px 0px;
+	color: #999;
+}
+.site-main .entry-body {
+	clear: both;
+}
+.site-main hr {
+	height: 0px;
+	width: 299px;
+	border: none;
+	border-bottom: 1px dashed #ddd;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.site-main pre {
+	white-space: pre-wrap;
+	width: 90%;
+	margin: 0 auto;
+	border: 1px solid #ccc;
+	background: #eee;
+	padding: 3px 5px;
+	display: block;
+}
+.site-main code {
+	font-family: "Consolas", "Ubuntu Mono", monospace;
+	font-size: 12px;
+	background: #eee;
+}
+
+.entry {
+	margin-bottom: 50px;
+}
+.entry-body img {
+	padding: 5px;
+	border: 1px solid #ccc;
+	border-radius: 2px;
+}
+.archive-link {
+	font-size: 16px;
+	text-align: center;
+}
+
+@media screen and (max-width: 810px) {
+	body {
+		background-image: none;
+	}
+	.site-container {
+		width: 100%;
+	}
+	.site-sidebar {
+		float: none;
+		width: 100%;
+		border-top: 1px dashed #ccc;
+	}
+	.site-main {
+		float: none;
+		width: 95%;
+	}
+}
