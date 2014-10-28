@@ -1,5 +1,5 @@
 local:
-	russell generate --title="Andreas' Blog" --url="file:///home/andreas/blog/russell/public"
+	russell generate --title="Andreas' Blog" --url="file:///home/andreas/blog/public"
 
 remote:
 	russell generate --title="Andreas' Blog" --url="http://www.lutro.me"
