@@ -126,10 +126,10 @@ If you're a free user, you'll probably need someone to invite you to the server.
 
 The different pickup channels (on QuakeNet) are:
 
-* #tdmpickup - European TDM
-* #playquake - European misc. modes
-* #qlpickup.eu - European misc. modes
-* #qlpickup.na - North American misc. modes
+* &num;tdmpickup - European TDM
+* &num;playquake - European misc. modes
+* &num;qlpickup.eu - European misc. modes
+* &num;qlpickup.na - North American misc. modes
 
 <h2 id="config">Configuring Quake Live</h2>
 
