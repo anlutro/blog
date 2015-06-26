@@ -8,7 +8,7 @@ I work with public Github repositories a lot, and get super annoyed because I wa
 
 However, I found a really cool way of doing this in all your repositories, without having to do anything each time you clone a repository. Add the following to your `~/.gitconfig`:
 
-	[url "git@github.com"]
-	pushInsteadOf = https://github.com
+	[url "git@github.com:"]
+	pushInsteadOf = https://github.com/
 
 This will replace "https://github.com" with "git@github.com" in the remote URL, but only when pushing.
