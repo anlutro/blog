@@ -1,4 +1,5 @@
 # Mocking models using Mockery
+pubdate: 2014-01-17 12:00:00
 
 Mocking classes and defining what methods they should receive is easy.
 

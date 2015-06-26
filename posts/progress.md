@@ -1,4 +1,5 @@
 # Progress
+pubdate: 2013-07-04 12:00:00
 
 I just felt like congratulating myself a bit.
 

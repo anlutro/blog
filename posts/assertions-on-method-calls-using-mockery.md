@@ -1,4 +1,5 @@
 # Assertions on method calls using Mockery
+pubdate: 2013-08-20 12:00:00
 
 I had a problem recently where I wanted to use PHPUnit to test what was being passed to a function. We're talking about a several hundred line string with a current timestamp, so simply using `$mock->shouldReceive('method')->with('parameter string')` wouldn't work.
 

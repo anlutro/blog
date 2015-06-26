@@ -1,4 +1,5 @@
 # Optimizing for production with Laravel 4
+pubdate: 2013-08-20 12:00:00
 
 Documentation on optimization and performance is somewhat lacking for Laravel 4 at the moment. In this post I'll give some quick pointers as to how Laravel 4 works and how you can improve its performance.
 

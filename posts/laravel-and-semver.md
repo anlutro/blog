@@ -1,4 +1,5 @@
 # Laravel and SemVer
+pubdate: 2014-09-01 12:00:00
 
 There's been some discussion around Laravel and SemVer (semantic versioning) recently, which I appreciate. SemVer is in my eyes a very important guideline for frameworks and widely adopted libraries.
 

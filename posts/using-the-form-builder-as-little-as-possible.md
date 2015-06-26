@@ -1,4 +1,5 @@
 # Using the Form Builder as little as possible
+pubdate: 2013-10-05 12:00:00
 
 I love the Laravel 4 FormBuilder (accessible through the `Form::` facade) - automatic re-populating of input from the session and from a model is awesome. In the upcoming versions you will even be able to use accessors to populate form fields from the model even if they're not actually fields in the database.
 

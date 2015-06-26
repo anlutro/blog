@@ -1,6 +1,8 @@
 # Assertions on mails in Laravel 4
+pubdate: 2014-07-05 12:00:00
 
 Testing mails in Laravel 4 is a bit of a weak spot. You can say `Mail::shouldReceive('send')->once()...` but specifying everything the method should receive in terms of arguments as well as asserting that the closure sets the recipient and subject correctly is tedious at best. [This SO answer](http://stackoverflow.com/questions/18406497/how-to-test-mail-facade-in-laravel-4/18431205#18431205) shows an example of how to unit test a mail being sent.
+pubdate: 2014-07-05 12:00:00
 
 There is a better way, as long as you're doing functional testing - that is, extending the TestCase that comes with Laravel and doing `$this->call(...)` stuff. We mock one layer deeper, the SwiftMailer service, and gain access to more rich information.
 
