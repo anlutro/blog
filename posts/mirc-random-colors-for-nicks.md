@@ -9,7 +9,6 @@ STEP 1: Press ALT+R in mIRC, click the variables tab and paste the following:
 STEP 2: Click the remote tab and paste this:
 
 	on ^*:text:*:#:{
-pubdate: 2012-06-25 12:00:00
 	  if ($cnick($nick).color == $color(normal text)) { 
 	    .cnick $nick $gettok(%colors,$calc(%currentcolor),32)
 	    if (%currentcolor == $gettok(%colors,0,32)) { 
@@ -22,10 +21,8 @@ pubdate: 2012-06-25 12:00:00
 	}
 
 If you only want nick colors to apply for people in certain channels, replace # with a list of channels separated by a comma. Example:
-pubdate: 2012-06-25 12:00:00
 
 	on ^*:text:*:#raziel,#qlreddit:{
-pubdate: 2012-06-25 12:00:00
 	  ...
 	}
 STEP 3: Press ALT+B in mIRC, click the nick colors tab and check "Enable nick colors"
