@@ -143,6 +143,8 @@ img.warning {
 	font-family: "Consolas", "Ubuntu Mono", monospace;
 	font-size: 12px;
 	background: #eee;
+	display: inline-block;
+	padding: 0 .25em;
 }
 
 .entry {
