@@ -1,2 +1,3 @@
-/backups
-/public
+/dist/*.html
+/dist/posts/*.html
+/dist/*rss*
