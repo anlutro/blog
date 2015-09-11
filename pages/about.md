@@ -25,18 +25,14 @@ Languages: Python, PHP, SQL, Javascript, CSS, Sass
 Frameworks/platforms: Flask, Angular, Laravel, Symfony, NodeJS  
 Tools: Vagrant, Salt, Git, Github
 
+Fluent in English and Norwegian, both written and spoken. Know some German, not
+enough to have a fluent conversation.
 
 ## Notable personal projects
 
 - [Autarky](https://autarky.lutro.me) - a PHP framework.
 
-
-## Language
-
-Fluent in English and Norwegian, both written and spoken. Know some German, not
-enough to have a fluent conversation.
-
-
 ## Interests
 
-Computers, programming, music, movies, TV shows, guitar, travel
+Mainly computers and programming. Other than that, standard stuff like movies,
+TV shows, travel. I play the guitar.
