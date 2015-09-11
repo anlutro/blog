@@ -2,13 +2,19 @@
 {% block title %}Home{% endblock %}
 {% block content %}
 {% for post in posts %}
-	<article class="entry">
-		<div class="entry-header">
-			<h2><a href="{{ root_url }}/posts/{{ post.slug }}">{{ post.title }}</a></h2>
-			<span class="timestamp">{{ post.pubdate.strftime('%Y-%m-%d') }}</span>
+	<article class="post">
+		<header class="post-header">
+			<h2 class="post-title">
+				<a href="{{ root_url }}/posts/{{ post.slug }}">{{ post.title }}</a>
+			</h2>
+			<span class="post-pubdate">{{ post.pubdate.strftime('%Y-%m-%d') }}</span>
+		</header>
+		<div class="post-body">
+			{{ post.body }}
 		</div>
-		<div class="entry-body">{{ post.body }}</div>
 	</article>
 {% endfor %}
-<div class="archive-link"><a href="{{ root_url }}/archive">Older posts - archives</a></div>
+<div class="archives_link">
+	<a href="{{ root_url }}/archive">Archives/older posts</a>
+</div>
 {% endblock %}

@@ -6,50 +6,23 @@
 	<meta name="description" content="Just another website about mostly programming.">
 	<meta name="viewport" content="width=device-width">
 	<link rel="alternate" type="application/rss+xml" href="{{ root_url }}/rss.xml" title="Andreas' Blog - RSS feed">
-	<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="{{ root_url }}/assets/style.css">
 </head>
 <body>
 
 <div class="site-container">
-	<!-- <header class="site-header">
-		<img src="{{ root_url }}/assets/logo.png">
-	</header> -->
-	<main class="site-main">
+	<header class="header">
+		<a href="{{ root_url }}" class="header-left">Andreas' Blog</a>
+		<span class="header-right">
+			<a href="{{ root_url }}/me">About me</a>
+			<a href="https://github.com/anlutro">GitHub</a>
+		</span>
+	</header>
+	<main class="main">
 	{% block content %}{% endblock %}
 	</main>
-	<aside class="site-sidebar">
-		<h3><a href="{{ root_url }}">Home</a></h3>
 
-		<h3>Quake Live</h3>
-		<ul>
-			<li><a href="{{ root_url }}/quake-live-introduction">Introduction to Quake</a></li>
-			<li><a href="{{ root_url }}/quake-live-beginner-guide">Complete beginner's guide</a></li>
-			<li><a href="http://www.reddit.com/r/QuakeLive" target="_blank">QL subreddit</a></li>
-		</ul>
-
-		<h3>Pages</h3>
-		<ul>
-			<li><a href="{{ root_url }}/music">My favorite music</a></li>
-			<li><a href="{{ root_url }}/movies">My favorite movies</a></li>
-			<li><a href="{{ root_url }}/php-packages">PHP packages</a></li>
-		</ul>
-
-		<h3>Links</h3>
-		<ul>
-			<li><a href="http://www.twitter.com/AndreasLutro" target="_blank">Twitter</a></li>
-			<li><a href="https://github.com/anlutro" target="_blank">GitHub</a></li>
-			<!-- <li><a href="http://lutro.priv.no/rss">RSS feed</a></li> -->
-		</ul>
-
-		<h3>About</h3>
-		<small class="aboutme">
-			<p>My name is Andreas, I'm from Norway, born 1990, working as a developer.</p>
-		 <p>Feel free to use any of the text or resources on this website as long as you provide attribution by a link back.</p>
-		</small>
-	</aside>
-
-	<footer class="site-footer">
+	<footer class="footer">
 		2012-2015 &copy; Andreas Lutro - Built with <a href="https://github.com/anlutro/russell">Russell</a>
 	</footer>
 </div>

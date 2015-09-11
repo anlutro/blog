@@ -1,0 +1,118 @@
+// mixins
+@mixin clearfix() {
+	&::after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+}
+
+@mixin dotted-underline {
+	border-bottom: 1px dotted #999;
+}
+
+// force vertical scrollbar, never show horizontal scrollbar
+html {
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+// general layout
+* {
+	box-sizing: inherit;
+}
+body {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-size: 20px;
+	line-height: 1.8;
+	background: #eee;
+	color: #444;
+}
+
+.site-container {
+	width: 40em;
+	margin: auto;
+}
+
+// elements
+a {
+	color: #111;
+}
+a:visited {
+	color: #666;
+}
+img {
+	max-width: 100%;
+}
+pre {
+	white-space: pre-wrap;
+	border: 1px solid #ccc;
+	background: #ddd;
+	padding: .2em .4em;
+	display: block;
+}
+code {
+	font-family: 'Source Code Pro', monospace;
+	font-size: 13px;
+	background: #ddd;
+	display: inline-block;
+	padding: 0 .25em;
+}
+hr {
+	height: 0px;
+	width: 75%;
+	border: none;
+	border-bottom: 1px dashed #ddd;
+	margin-top: 2em;
+	margin-bottom: 2em;
+}
+h1, h2, h3, h4, h5, h6 {
+	margin-top: 1em;
+	margin-bottom: 0.25em;
+}
+
+// header
+.header {
+	@include clearfix;
+	a {
+		line-height: 3em;
+		display: inline-block;
+	}
+	@media screen and (max-width: 30em) {
+		font-size: 14px;
+	}
+}
+.header-left {
+	float: left;
+}
+.header-right {
+	float: right;
+	a {
+		margin-left: 1em;
+	}
+}
+
+// main content
+.post-body, .page-body {
+	a {
+		@include dotted-underline;
+	}
+}
+
+.archives_link {
+	margin: 1em 0;
+	font-size: 24px;
+	text-align: center;
+
+	a {
+		@include dotted-underline;
+	}
+}
+
+// footer
+.footer {
+	font-size: 14px;
+	text-align: center;
+}

@@ -1,7 +1,42 @@
-# About me
+# Andreas Lutro
 
-My name is Andreas, I'm born in 1990 and live in Stavanger, Norway. I work full-time as a web/system developer, an occupation which is currently my main passion and drive in life.
+E-mail: [andreas@lutro.me](mailto:andreas@lutro.me)  
+Phone: +47 913 11 206  
+Github: [@anlutro](https://github.com/anlutro)
 
-Having dropped out of high school I've been through different jobs and a ton of different hobbies. Interests include everything involving computers, photography, music, film, games, playing the guitar, politics, organizations and more.
+Programming has been my main hobby since I got my hands on a book on C when I
+was 12 years old. I consider myself a quick learner with a structured workflow.
+Big fan of open-source, have contributed to many of the platforms and tools I've
+used.
 
-Programming experience includes HTML, CSS, LESS, PHP, JavaScript, Python, C++, Java - experience with frameworks/major libraries such as Laravel 4, PHPUnit, jQuery, AngularJS. Fan of object oriented programming and testing in general.
+
+## Skills and experience
+
+Development and programming of applications, mostly web-based. Includes drafting
+specifications, design and programming of back-end services, integration with
+a variety of third-party services, and front-end client code.
+
+Linux systems administration - Management of web services through Nginx, Apache
+and their assorted FastCGI handlers: PHP-FPM, UWSGI for Ruby/Python. Management
+of database services (MySQL and Postgres), queue services and workers, log
+processing, statistics collection and more.
+
+Languages: Python, PHP, SQL, Javascript, CSS, Sass  
+Frameworks/platforms: Flask, Angular, Laravel, Symfony, NodeJS  
+Tools: Vagrant, Salt, Git, Github
+
+
+## Notable personal projects
+
+- [Autarky](https://autarky.lutro.me) - a PHP framework.
+
+
+## Language
+
+Fluent in English and Norwegian, both written and spoken. Know some German, not
+enough to have a fluent conversation.
+
+
+## Interests
+
+Computers, programming, music, movies, TV shows, guitar, travel
