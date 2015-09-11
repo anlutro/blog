@@ -1,0 +1,11 @@
+@mixin clearfix() {
+	&::after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+}
+
+@mixin dotted-underline {
+	border-bottom: 1px dotted $bordercolor;
+}

@@ -1,87 +1,7 @@
-// variables
-$bg: #eee;
-$block-bg: #ddd;
-$border-color: #999;
-$faded-color: #666;
-$text-color: #444;
-$focus-color: #111;
-$small-fontsize: 14px;
-$normal-fontsize: 20px;
-$large-fontsize: 24px;
-
-// mixins
-@mixin clearfix() {
-	&::after {
-		content: "";
-		display: table;
-		clear: both;
-	}
-}
-
-@mixin dotted-underline {
-	border-bottom: 1px dotted $border-color;
-}
-
-// force vertical scrollbar, never show horizontal scrollbar
-html {
-	overflow-y: scroll;
-	overflow-x: hidden;
-}
-
-// general layout
-* {
-	box-sizing: inherit;
-}
-body {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-size: $normal-fontsize;
-	line-height: 1.8;
-	background: $bg;
-	color: $text-color;
-}
-
+// page layout - limit width and vertically center
 .site-container {
 	width: 40em;
 	margin: auto;
-}
-
-// elements
-a {
-	color: $focus-color;
-}
-a:visited {
-	color: $faded-color;
-}
-img {
-	max-width: 100%;
-}
-pre {
-	white-space: pre-wrap;
-	border: 1px solid $border-color;
-	background: $block-bg;
-	padding: .2em .6em;
-	display: block;
-}
-code {
-	font-family: 'Source Code Pro', monospace;
-	font-size: $small-fontsize;
-	background: $block-bg;
-	display: inline-block;
-	padding: 0 .25em;
-}
-hr {
-	height: 0px;
-	width: 75%;
-	border: none;
-	border-bottom: 1px dashed $block-bg;
-	margin-top: 2em;
-	margin-bottom: 2em;
-}
-h1, h2, h3, h4, h5, h6 {
-	margin-top: 1em;
-	margin-bottom: 0.25em;
 }
 
 // header
@@ -118,7 +38,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .post-pubdate {
-	color: $faded-color;
+	color: $faded-textcolor;
 }
 
 .comments {
