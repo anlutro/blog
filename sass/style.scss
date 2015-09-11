@@ -1,3 +1,14 @@
+// variables
+$bg: #eee;
+$block-bg: #ddd;
+$border-color: #999;
+$faded-color: #666;
+$text-color: #444;
+$focus-color: #111;
+$small-fontsize: 14px;
+$normal-fontsize: 20px;
+$large-fontsize: 24px;
+
 // mixins
 @mixin clearfix() {
 	&::after {
@@ -8,7 +19,7 @@
 }
 
 @mixin dotted-underline {
-	border-bottom: 1px dotted #999;
+	border-bottom: 1px dotted $border-color;
 }
 
 // force vertical scrollbar, never show horizontal scrollbar
@@ -25,10 +36,10 @@ body {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-size: 20px;
+	font-size: $normal-fontsize;
 	line-height: 1.8;
-	background: #eee;
-	color: #444;
+	background: $bg;
+	color: $text-color;
 }
 
 .site-container {
@@ -38,25 +49,25 @@ body {
 
 // elements
 a {
-	color: #111;
+	color: $focus-color;
 }
 a:visited {
-	color: #666;
+	color: $faded-color;
 }
 img {
 	max-width: 100%;
 }
 pre {
 	white-space: pre-wrap;
-	border: 1px solid #ccc;
-	background: #ddd;
-	padding: .2em .4em;
+	border: 1px solid $border-color;
+	background: $block-bg;
+	padding: .2em .6em;
 	display: block;
 }
 code {
 	font-family: 'Source Code Pro', monospace;
-	font-size: 13px;
-	background: #ddd;
+	font-size: $small-fontsize;
+	background: $block-bg;
 	display: inline-block;
 	padding: 0 .25em;
 }
@@ -64,7 +75,7 @@ hr {
 	height: 0px;
 	width: 75%;
 	border: none;
-	border-bottom: 1px dashed #ddd;
+	border-bottom: 1px dashed $block-bg;
 	margin-top: 2em;
 	margin-bottom: 2em;
 }
@@ -95,15 +106,28 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 // main content
+.post-title, .page-title {
+	a:hover {
+		@include dotted-underline;
+	}
+}
 .post-body, .page-body {
 	a {
 		@include dotted-underline;
 	}
 }
 
+.post-pubdate {
+	color: $faded-color;
+}
+
+.comments {
+	margin-top: 2em;
+}
+
 .archives_link {
 	margin: 1em 0;
-	font-size: 24px;
+	font-size: $large-fontsize;
 	text-align: center;
 
 	a {
@@ -113,6 +137,7 @@ h1, h2, h3, h4, h5, h6 {
 
 // footer
 .footer {
-	font-size: 14px;
+	margin: 2em 0 1em;
+	font-size: $small-fontsize;
 	text-align: center;
 }
