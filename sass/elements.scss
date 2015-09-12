@@ -50,8 +50,15 @@ a:visited {
 }
 
 
-// prevent images from overflowing their container
-img { max-width: 100%; }
+// images
+img {
+	// prevent images from overflowing their container
+	max-width: 100%;
+}
+figure {
+	margin: 0;
+	padding: 0;
+}
 
 
 // lists
