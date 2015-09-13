@@ -27,6 +27,9 @@
 
 // main content
 .post-title, .page-title {
+	a, a:visited {
+		color: $focus-textcolor;
+	}
 	a:hover {
 		@include dotted-underline;
 	}
