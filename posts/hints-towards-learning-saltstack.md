@@ -1,7 +1,7 @@
 # Hints towards learning SaltStack
 pubdate: 2015-06-28 00:19:38
 
-SaltStack is an awesome provisioning tool I've adapted in the past few months. I'd like to share a few pointers to other people working with it for the first time.
+SaltStack is an awesome provisioning tool I've been implementing in the past few months. I'd like to share a few pointers to other people working with it for the first time.
 
 **Know Python.** A lot of Jinja logic will borrow heavily from Python, and to best understand a lot of Salt's inner workings you need to understand how Python works. You need to know the difference between a dict and a list, and you need to know how to iterate over a dict.
 
