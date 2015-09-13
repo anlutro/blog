@@ -47,6 +47,8 @@
 
 .post-pubdate {
 	color: $faded-textcolor;
+	// makes it line up better with the title, since title is much larger font
+	margin-left: .15em;
 }
 
 .comments {
