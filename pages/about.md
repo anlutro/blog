@@ -32,7 +32,7 @@ enough to have a fluent conversation.
 
 ## Notable personal projects
 
-- [Autarky](https://autarky.lutro.me) - a PHP framework.
+- [Autarky](http://autarky.lutro.me) - a PHP framework.
 - [Russell](https://github.com/anlutro/russell) - a Python3 static HTML site
   generator.
 - [A PHP menu builder](https://github.com/anlutro/php-menu).
