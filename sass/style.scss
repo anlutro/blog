@@ -26,7 +26,12 @@
 }
 
 // main content
+.post-header, .page-header {
+	margin-top: 2em;
+}
 .post-title, .page-title {
+	margin: 0;
+
 	a, a:visited {
 		color: $focus-textcolor;
 	}

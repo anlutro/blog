@@ -2,12 +2,14 @@
 {% block title %}Archives{% endblock %}
 {% block content %}
 {% for post in posts %}
-	<article class="entry">
-		<div class="entry-header">
-			<h2><a href="{{ root_url }}/posts/{{ post.slug }}">{{ post.title }}</a></h2>
-			<span class="timestamp">{{ post.pubdate.strftime('%B %d, %Y') }}</span>
+	<article class="post">
+		<div class="post-header">
+			<span class="post-pubdate">{{ post.pubdate.strftime('%B %d, %Y') }}</span>
+			<h2 class="post-title">
+				<a href="{{ root_url }}/posts/{{ post.slug }}">{{ post.title }}</a>
+			</h2>
 		</div>
-		<div class="entry-body">{{ post.excerpt }}</div>
+		<div class="post-body">{{ post.excerpt }}</div>
 	</article>
 {% endfor %}
 {% endblock %}
