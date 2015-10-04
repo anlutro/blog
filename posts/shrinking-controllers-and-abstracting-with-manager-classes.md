@@ -11,7 +11,7 @@ The simplest way to abstract logic away from your controllers is to grab all the
 2. Returning a response (usually a redirect or a view)
 3. Putting stuff into the session (flash messages)
 
-Everything else - validation, mail, queue and database stuff - you should copy into a class called a manager. If your controller is called `ThingController,` your manager should be called `ThingManager`. Do not worry about using static method calls and facades within the manager class - our main focus for now is to move business logic away from the controller.
+Everything else - validation, mail, queue and database stuff - you should copy into a class called a manager. If your controller is called `ThingController`, your manager should be called `ThingManager`. Do not worry about using static method calls and facades within the manager class - our main focus for now is to move business logic away from the controller.
 
 Once the manager class has been made, inject it into the controller simply by typehinting the constructor argument. Laravel's IoC container takes care of the rest for us. Now, we can call our manager's methods within the controller - for example, `$this->thingManager->myMethod(Input::all())` and do something with what is returned. For example, we may redirect to two different URLs depending on whether it returned true or false.
 
