@@ -9,8 +9,8 @@ was 12 years old. I consider myself a quick learner with a structured workflow.
 Big fan of open-source, have contributed to many of the platforms and tools I've
 used.
 
-Other than computers and programming, I enjoy movies/TV shows, music, travel,
-playing the guitar, and the occasional video game.
+Other than computers and programming, I enjoy [movies](/movies)/TV shows,
+[music](/music), travel, playing the guitar, and the occasional video game.
 
 ## Skills and experience
 
