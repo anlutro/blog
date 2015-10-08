@@ -1,6 +1,7 @@
 // page layout - limit width and vertically center
 .site-container {
-	width: 40em;
+	max-width: 45em;
+	padding: 0 1em;
 	margin: auto;
 }
 
