@@ -9,15 +9,21 @@ Virtualenvs are usually a good way to deal with this, but you have to manually a
 
 Interestingly, python seems to look for packages/includes/whatever relative to the path of the python binary. If we run a python script with `/usr/bin/python`, the virtualenv's packages won't be pulled in, but if we run it with `/path/to/virtualenv/bin/python`, they will.
 
+	$ /usr/bin/python ./bin/salt --version
+	[ ... ]
+	ValueError: Expected version spec in [ ... ]
+	$ ./bin/python ./bin/salt --version
+	salt 2015.8.0-154-g4a69db2 (Beryllium)
+
 If we look at the shebang line of a script file in our virtualenv's `bin` directory, we can see that it specifies the absolute path to the python bin file in our virtualenv:
 
 	$ head -1 bin/salt
 	#!/home/andreas/dev/python/salt/bin/python2
 
-This means that we can simply symlink the script to `~/bin` or `/usr/local/bin` and it'll work!
+This means that we can simply symlink the script to `~/bin` or `/usr/local/bin` and it'll work, even if the virtualenv isn't activated.
 
 	$ ln -s ~/dev/python/salt/bin/salt ~/bin/salt
-	$ salt --version
-	salt 2015.8.0-154-g4a69db2 (Beryllium)
 	$ which salt
 	/home/andreas/bin/salt
+	$ salt --version
+	salt 2015.8.0-154-g4a69db2 (Beryllium)
