@@ -35,5 +35,5 @@ enough to have a fluent conversation.
 - [Autarky](http://autarky.lutro.me) - a PHP framework.
 - [Russell](https://github.com/anlutro/russell) - a Python3 static HTML site
   generator.
-- [Phint, a PHP code analyzing tool.](https://github.com/anlutro/phint).
+- [Phint](https://github.com/anlutro/phint) - a PHP code analyzing tool.
 - [A PHP menu builder](https://github.com/anlutro/php-menu).
