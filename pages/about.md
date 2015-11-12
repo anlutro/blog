@@ -6,8 +6,8 @@ Github: [@anlutro](https://github.com/anlutro)
 
 Programming has been my main hobby since I got my hands on a book on C when I
 was 12 years old. I consider myself a quick learner with a structured workflow.
-Big fan of open-source, have contributed to many of the platforms and tools I've
-used.
+Big fan of open-source - I've contributed to many of the platforms and tools I
+use.
 
 Other than computers and programming, I enjoy [movies](/movies)/TV shows,
 [music](/music), travel, playing the guitar, and the occasional video game.
