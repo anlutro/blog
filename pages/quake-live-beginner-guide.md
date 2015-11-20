@@ -4,7 +4,7 @@ _Jump to: [health and armor](#healthandarmor), [weapons](#weapons), [tactics](#t
 
 Quake Live is one of those games that's a bit hard to get into, and how to play it is not always intuitive. In SC2 you can simply buy the game, create an account and start playing and learn as you go along, or you can go to TeamLiquid.net and watch countless streams for entertainment or education - not quite so with Quake Live. Therefore, this is meant as a guide to new players or spectators who have already "decided" that Quake Live is a game they want to get into.
 
-If you're not yet sure if you want to get into Quake, I recommend you check out my [introduction to Quake Live](http://www.lutro.me/ql/intro/) for some entertaining and educational videos and guides - they are easier to digest than this massive and in-depth wall of text!
+If you're not yet sure if you want to get into Quake, I recommend you check out my [introduction to Quake Live](//www.lutro.me/ql/intro/) for some entertaining and educational videos and guides - they are easier to digest than this massive and in-depth wall of text!
 
 Very short about my "qualifications" in Quake: I was at best low-mid level dueller who got into Quake Live when it launched. I'd started playing Quake 3 CPMA some months beforehand. I've no delusions about being a particularily good quake player, but consider myself a fairly decent teacher and writer, which is what made me want to write this.
 
@@ -22,13 +22,13 @@ I won't go too much into detail on strafejumping if the concept is new to you, b
 
 While modern shooters usually have you regenerate health when you’re out of combat, and you get a set of weapons when you spawn, you have to pick up health, armor and weapons in Quake Live. You start with a pathetic Machine Gun and 125 health at the start of the game (and every time you die) and have to work your way from there by picking up items.
 
-<p style="text-align:center"><img src="http://www.lutro.me/images/health_5.png" alt=""> <img src="http://www.lutro.me/images/health_25.png" alt=""><br>
-<img src="http://www.lutro.me/images/health_50.png" alt=""> <img src="http://www.lutro.me/images/health_mega.png" alt=""></p>
+<p style="text-align:center"><img src="//www.lutro.me/images/health_5.png" alt=""> <img src="//www.lutro.me/images/health_25.png" alt=""><br>
+<img src="//www.lutro.me/images/health_50.png" alt=""> <img src="//www.lutro.me/images/health_mega.png" alt=""></p>
 
 These are health bubbles. The yellow and orange ones give you 25 and 50 health, respectively, but only up to 100. The green one gives you 5, up to 200. The blue health bubble is the megahealth (or just mega) which gives you 100 health up to 200, and is one of the "major powerups" along with the red armor.
 
-<p style="text-align:center"><img src="http://www.lutro.me/images/armor_shard.png" alt=""> <img src="http://www.lutro.me/images/armor_green.png" alt=""><br>
-<img src="http://www.lutro.me/images/armor_yellow.png" alt=""> <img src="http://www.lutro.me/images/armor_red.png" alt=""></p>
+<p style="text-align:center"><img src="//www.lutro.me/images/armor_shard.png" alt=""> <img src="//www.lutro.me/images/armor_green.png" alt=""><br>
+<img src="//www.lutro.me/images/armor_yellow.png" alt=""> <img src="//www.lutro.me/images/armor_red.png" alt=""></p>
 
 These are armor pickups. All of them give you extra armor, which absorbs damage, making you lose less health. In reality health and armor almost always add up, so there’s no real difference between 100HP+200 armor and 200HP+100 armor. (There _is_, however, a difference between having 10HP+100armor and 100HP+10armor, because armor will only absorb up to 2/3rds of the damage you take.)
 
@@ -42,15 +42,15 @@ There aren't _that_ many weapons in Quake Live, but they are all very different 
 
 <table>
 	<tbody><tr>
-		<td style="width:200px;"><img src="http://www.lutro.me/images/weapon_rocketlauncher.png" style="width:200px; height:125px;"></td>
+		<td style="width:200px;"><img src="//www.lutro.me/images/weapon_rocketlauncher.png" style="width:200px; height:125px;"></td>
 		<td>The rocket launcher deals splash damage and is most effective at short range. A direct hit will deal 100 damage, but usually less as direct hits are very hard to pull off. Tip: aim for the ground near your opponent rather than the opponent in mid-air!</td>
 	</tr>
 	<tr>
-		<td style="width:200px;"><img src="http://www.lutro.me/images/weapon_lightninggun.png" style="width:200px; height:125px;"></td>
+		<td style="width:200px;"><img src="//www.lutro.me/images/weapon_lightninggun.png" style="width:200px; height:125px;"></td>
 		<td style="width:200px;">The lightning gun deals 5-7 damage in very quick succession, but has limited range. Used at mid range or when the map makes it hard to hit with rockets (like in some stairs).</td>
 	</tr>
 	<tr>
-		<td style="width:200px;"><img src="http://www.lutro.me/images/weapon_railgun.png" style="width:200px; height:125px;"></td>
+		<td style="width:200px;"><img src="//www.lutro.me/images/weapon_railgun.png" style="width:200px; height:125px;"></td>
 		<td>The rail gun deals 80 damage and has unlimited range, but a long reload time. Usually used as a sniper gun of sorts, very risky to use at short range.</td>
 	</tr>
 </tbody></table>
@@ -61,25 +61,25 @@ Using these weapons effectively is another way to win a match. Some players will
 
 When playing, there are many tricks and techniques you can use to gain an advantage. A few very basic examples:
 
-![](http://www.lutro.me/images/shot0019.jpg)![](http://www.lutro.me/images/shot0010.jpg)
+![](//www.lutro.me/images/shot0019.jpg)![](//www.lutro.me/images/shot0010.jpg)
 
 When you have a rocket launcher, it's very hard for your opponent to charge through a narrow corridor without taking a lot of damage.
 
 <hr>
 
-![](http://www.lutro.me/images/shot0016.jpg)![](http://www.lutro.me/images/shot0018.jpg)
+![](//www.lutro.me/images/shot0016.jpg)![](//www.lutro.me/images/shot0018.jpg)
 
 If you have a railgun, you can often deal damage at long range before your opponent has time to fire back.
 
 <hr>
 
-![](http://www.lutro.me/images/shot0014.jpg)![](http://www.lutro.me/images/shot0017.jpg)
+![](//www.lutro.me/images/shot0014.jpg)![](//www.lutro.me/images/shot0017.jpg)
 
 The player on the high ground usually has an easier time dealing damage than the player on the low ground.
 
 <hr>
 
-![](http://www.lutro.me/images/shot0009.jpg)![](http://www.lutro.me/images/shot0011.jpg)
+![](//www.lutro.me/images/shot0009.jpg)![](//www.lutro.me/images/shot0011.jpg)
 
 Sometimes, you can predict where your opponent will spawn after you've killed him, and you can pick up a spawnfrag.
 
@@ -91,7 +91,7 @@ OK, now you know how Quake Live works! At least the basics. You’ll learn a lot
 
 Once you feel ready to play a real match, click the "Play Online" tab to see a list of available servers. Click the "customize" button in the top right and tweak the settings as you like.
 
-![](http://www.lutro.me/images/servers.png)
+![](//www.lutro.me/images/servers.png)
 
 I recommend leaving the settings as shown in this picture, but changing the gametype depending on what you want to play. These are the different gametypes available to you:
 
@@ -103,11 +103,11 @@ I recommend leaving the settings as shown in this picture, but changing the game
 
 Right away, I'm going to tell you that I don't recommend playing public CTF or TDM as the games will often feel unfair and annoying because the skill level of the players can vary a lot. If you want to play team games, play FFA and CA until you feel comfortable with the game and play some duels against fellow low-level players, and when you feel ready, join what's called a **CTF/TDM pickup**.
 
-![](http://www.lutro.me/images/tdmpickup.jpg)
+![](//www.lutro.me/images/tdmpickup.jpg)
 
 If you use QLprism, hit the small "IRC" icon in the bottom right, then join a pickup channel and add yourself. You join a channel by writing **/join #channel** and hitting enter.
 
-![](http://www.lutro.me/images/tdmpickup21.jpg)
+![](//www.lutro.me/images/tdmpickup21.jpg)
 
 If you don't use QLprism, you can use the QuakeNet webchat instead. There are also standalone IRC clients like [mIRC](http://www.mirc.com).
 
@@ -143,7 +143,7 @@ First of all, you need to know where your Quake Live folder is. Since Quake Live
 
 Once you've found it, I recommend you add it to favorites in Windows simply by dragging the folder into your favorites bar on the left.
 
-![](http://www.lutro.me/images/Untitled-1.jpg)
+![](//www.lutro.me/images/Untitled-1.jpg)
 
 Once you're in the baseq3 folder, create a new file and name it **autoexec.cfg**. This is a config file, and naming it autoexec means it'll automatically be executed/ran every time you start Quake Live.
 

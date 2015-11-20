@@ -7,7 +7,7 @@ local:
 	$(cmd) --url="file:///$$PWD/dist"
 
 remote:
-	$(cmd) --url="http://www.lutro.me"
+	$(cmd) --url="//www.lutro.me"
 
 upload:
 	rsync -rvce ssh ./dist/ lutro.me:/var/www/lutro.me
