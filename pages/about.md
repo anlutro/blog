@@ -1,7 +1,6 @@
 # Andreas Lutro
 
 E-mail: [andreas@lutro.me](mailto:andreas@lutro.me)  
-Phone: +47 913 11 206  
 Github: [@anlutro](https://github.com/anlutro)
 
 Programming has been my main hobby since I got my hands on a book on C when I
