@@ -94,7 +94,7 @@ code, pre, samp, kbd {
 }
 code, samp, kbd {
 	background: $faded-bgcolor;
-	color: $faded-textcolor;
+	color: $focus-textcolor;
 	border: 1px solid $faded-bordercolor;
 	font-size: $small-fontsize;
 	display: inline-block;
