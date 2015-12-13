@@ -93,21 +93,22 @@ code, pre, samp, kbd {
 	font-family: 'Source Code Pro', monospace;
 }
 code, samp, kbd {
-	background: $block-bgcolor;
+	background: $faded-bgcolor;
+	color: $faded-textcolor;
 	border: 1px solid $faded-bordercolor;
-	color: $focus-textcolor;
 	font-size: $small-fontsize;
 	display: inline-block;
 	padding: 0 .25em;
 }
 pre {
-	background: $block-bgcolor;
+	background: $code-bgcolor;
 	border: 1px solid $faded-bordercolor;
 	display: block;
 	padding: .2em .6em;
 	white-space: pre-wrap;
 }
 pre code {
+	color: $code-textcolor;
 	border: none;
 	padding: 0;
 	background-color: transparent;
