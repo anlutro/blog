@@ -23,7 +23,7 @@ of database services (MySQL and Postgres), queue services and workers, log
 processing, statistics collection and more.
 
 Languages: Python, PHP, SQL, Javascript, CSS, Sass  
-Frameworks/platforms: Flask, Angular, Laravel, Symfony, NodeJS  
+Frameworks/platforms: Flask, Django, Angular, Laravel, Symfony  
 Tools: Vagrant, Salt, Git, Github
 
 Fluent in English and Norwegian, both written and spoken. Know some German, not
