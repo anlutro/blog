@@ -24,7 +24,7 @@ and Postgres), queue services and workers, and more.
 
 Languages: Python, PHP, SQL, Javascript, CSS, Sass, Shell  
 Frameworks/platforms: Flask, Django, Angular, Laravel, Symfony  
-Tools: Salt, Git, Vagrant, Ganeti, GNU coreutils
+Tools: Salt, Git, Vagrant, Ganeti, GNU coreutils, Jira
 
 Fluent in English and Norwegian, both written and spoken. Know some German, not
 enough to have a fluent conversation.
