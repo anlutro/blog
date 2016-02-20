@@ -1,3 +1,10 @@
-src: .
-target: dist
-title: "lutro.me"
+root_path: .
+root_url: //www.lutro.me
+title: lutro.me
+
+# these are relative to root_path. you can remove them
+# or comment them out to leave them as their defaults.
+#posts_dir: posts
+#pages_dir: pages
+#dist_dir: dist
+#templates_dir: templates
