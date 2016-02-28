@@ -9,6 +9,13 @@
 	<div class="post-body">
 		{{ post.body }}
 	</div>
+	<footer class="post-footer">
+		{% if post.tags %}
+		<p class="post-tags">
+			Tags: {{ post.tag_links | join(', ') }}
+		</p>
+		{% endif %}
+	</footer>
 </article>
 
 <div id="disqus_thread" class="comments"></div>
