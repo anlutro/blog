@@ -1,5 +1,6 @@
 # Installing a virtualenv bin globally
 pubdate: 2015-10-10 09:54:43
+tags: Python, Virtualenv
 
 TLDR: Symlink `/path/to/virtualenv/bin/my-script` to `~/bin/my-script`
 

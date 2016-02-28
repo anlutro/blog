@@ -1,5 +1,6 @@
 # Crunchbang and lx* packages
 pubdate: 2013-11-24 12:00:00
+tags: Linux, Crunchbang
 
 I've been running Crunchbang as my main linux distribution for a while now, and have had a really good time with it. Recently I stumbled upon a problem, and thought I'd just put my solution out there.
 

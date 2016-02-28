@@ -1,5 +1,6 @@
 # Russell
 pubdate: 2014-03-17 12:00:00
+tags: Python
 
 Over the weekend I had a fun little project - writing a tiny static HTML blog generator.
 

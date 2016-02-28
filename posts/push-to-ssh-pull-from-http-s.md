@@ -1,5 +1,6 @@
 # Git(hub) - Push via SSH, pull via HTTP(S)
 pubdate: 2015-06-26 12:00:00
+tags: Git
 
 I work with public Github repositories a lot, and get super annoyed because I want to push with my SSH key (because I'd rather put in my key's password than my Github username/password), but I want to pull with HTTPS (because then I don't have to put in a username or password). Normally, the way you do this is:
 

@@ -1,5 +1,6 @@
 # Volume in Debian distros (Crunchbang, Ubuntu...)
 pubdate: 2013-08-20 12:00:00
+tags: Linux, Audio, Pulseaudio
 
 I've had this problem with my old Lenovo ThinkPad with every Linux installation. When I installed CrunchBang (a great disto, by the way) I had it again and had forgotten how to fix it. Amazingly, by googling around I found **my own old blog with a post on how to fix it** from all the way back to Ubuntu 9.10. I decided to re-write it a bit and host it here.
 

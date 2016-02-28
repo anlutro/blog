@@ -1,5 +1,6 @@
 # Testable, simple L4 code without repository patterns
 pubdate: 2013-08-31 12:00:00
+tags: Laravel, PHP
 
 There's a lot of people advocating the repository pattern for testability in your Laravel 4 projects. Fact is, it doesn't make your code that much more testable, and you can easily achieve the same level of testability by using your models as you would a repository.
 

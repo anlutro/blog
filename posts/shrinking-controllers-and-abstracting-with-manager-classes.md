@@ -1,5 +1,6 @@
 # Shrinking controllers and abstracting with manager classes
 pubdate: 2014-10-17 12:00:00
+tags: Laravel, PHP
 
 There are a lot of articles revolving around Laravel 4 specifically that try and explain how to abstract logic away from your controller, but most of them either kinda miss the point or overcomplicate things (by using facades, repositories, interfaces...).
 

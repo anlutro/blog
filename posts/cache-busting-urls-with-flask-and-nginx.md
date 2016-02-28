@@ -1,5 +1,6 @@
 # Cache busting URLs with Flask and Nginx
 pubdate: 2016-01-16 08:30:48
+tags: Flask, Nginx, Python
 
 In this post, I'll show you how to effectively override Flask's `url_for` function in order to add a timestamp to static asset URLs, as well as setting up Nginx to serve cache busted URLs.
 
