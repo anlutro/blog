@@ -1,5 +1,5 @@
 # Hints towards learning SaltStack
-pubdate: 2015-06-28 00:19:38
+pubdate: 2015-06-28 00:19:38 +0100
 tags: Salt
 
 SaltStack is an awesome provisioning tool I've been implementing in the past few months. I'd like to share a few pointers to other people working with it for the first time.

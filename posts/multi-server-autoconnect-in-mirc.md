@@ -1,5 +1,5 @@
 # Multi-server autoconnect in mIRC
-pubdate: 2012-06-25 12:00:00
+pubdate: 2012-06-25 12:00:00 +0100
 tags: mIRC
 
 Press alt+r and enter the following:

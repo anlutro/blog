@@ -1,5 +1,5 @@
 # SASS tests with a simple Makefile
-pubdate: 2014-12-14 12:00:00
+pubdate: 2014-12-14 12:00:00 +0100
 tags: Sass, Make
 
 Working with increasingly complex SASS mixins and functions recently, I wanted to set up some sort of test suite to check the CSS output of various files. Rather than bother with some silly NPM package/Ruby gem, I figured I might as well just use some basic shell commands that can be placed in a Makefile (which I already had anyway).

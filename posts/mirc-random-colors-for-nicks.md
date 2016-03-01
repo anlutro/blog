@@ -1,5 +1,5 @@
 # mIRC - random colors for nicks
-pubdate: 2012-06-25 12:00:00
+pubdate: 2012-06-25 12:00:00 +0100
 tags: mIRC
 
 STEP 1: Press ALT+R in mIRC, click the variables tab and paste the following:
