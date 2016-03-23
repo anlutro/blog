@@ -10,7 +10,7 @@ SaltStack is an awesome provisioning tool I've been implementing in the past few
 
 **Learn the difference between states and modules.** State functions are the ones you put into your SLS files (pkg.installed, file.managed etc.), module functions are called via `{{ salt['module.function'] }}`. `pillar.get` is a very commonly used module function. When you run `salt '*' state.highstate` you're actually calling the module function `state.highstate`.
 
-**Requisites are for state IDs/names, not actual files/services/packages/whatever.** When you have a `require: [ pkg: nginx ]` in your state, you're not requiring the package nginx to be installed - you're requiring a state with the ID *or* name "nginx" *and* of the type "pkg" (`pkg.installed`, for example). The same applies to files and services.
+**Requisites are for state IDs/names, not files, services, packages etc..** When you have a `require: [ pkg: nginx ]` in your state, you're not requiring the package nginx to be installed - you're requiring a state with the ID *or* name "nginx" *and* of the type "pkg" (`pkg.installed`, for example). The same applies to files and services.
 
 **Use formulas as examples, not plugins.** Many of the [SaltStack formulas](https://github.com/saltstack-formulas) are either broken, overcomplicated or just not suitable for your use case. Use them for inspiration and learning, feel free to copy-paste bits from them, but manage your own formulas.
 
