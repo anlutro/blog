@@ -17,24 +17,22 @@ to port 8086 would fail.
 
 The solution: Using `until` and `nc`/`netcat`.
 
-```
-influxdb:
-  pkg.installed: []
-  service.running:
-    - name: influxdb
-  cmd.run:
-    - name: until nc -z localhost 8086; do sleep 1; done
-    - timeout: 10
-    - onchanges:
-      - service: influxdb
+    influxdb:
+      pkg.installed: []
+      service.running:
+        - name: influxdb
+      cmd.run:
+        - name: until nc -z localhost 8086; do sleep 1; done
+        - timeout: 10
+        - onchanges:
+          - service: influxdb
 
-influxdb-user-example:
-  influxdb_user.present:
-    - name: example
-    - passwd: example
-    - require:
-      - cmd: influxdb
-```
+    influxdb-user-example:
+      influxdb_user.present:
+        - name: example
+        - passwd: example
+        - require:
+          - cmd: influxdb
 
 What's happening here is that whenever the service gets restarted, that counts
 as a change in the `service.running` state. That triggers the `cmd.run` state,
