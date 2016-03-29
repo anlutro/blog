@@ -1,30 +1,39 @@
 // page layout - limit width and vertically center
 .site-container {
-	max-width: 40em;
-	padding: 0 1em;
+	max-width: 70rem;
+	padding: 0 1rem;
 	margin: auto;
 }
-
-// header
-.header {
-	@include clearfix;
-	a {
-		line-height: 3em;
-		display: inline-block;
-	}
-	@media screen and (max-width: 30em) {
-		font-size: 14px;
-	}
-}
-.header-left {
+.main {
+	width: 45rem;
 	float: left;
 }
-.header-right {
+.sidebar {
+	width: 20rem;
 	float: right;
-	a {
-		margin-left: 1em;
+}
+.footer {
+	clear: both;
+}
+
+
+// sidebar
+.sidebar {
+	padding-top: 2em;
+	font-size: 16px;
+
+	.menu {
+		a {
+			display: block;
+		}
+	}
+
+	.links {
+		line-height: 1.4;
+		vertical-align: top;
 	}
 }
+
 
 // main content
 .post-header, .page-header {

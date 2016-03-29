@@ -1,1 +1,7 @@
-/dist/*
+/bin
+/include
+/lib
+/dist
+/pip-selfcheck.json
+*.pyc
+__pycache__

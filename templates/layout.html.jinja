@@ -1,27 +1,52 @@
+{% macro links_block(links, title) %}
+{% if links %}
+<aside class="links">
+	<h3 class="links-title">{{ title }}</h2>
+	<ul>
+	{% for link in links[:5] %}
+		<li>
+			<a href="{{ link.url }}">{{ link.title }}</a>
+			<span class="link-site">{{ link.url | extract_domain }}</span>
+			<span class="link-date">{{ link.date }}</span>
+		</li>
+	{% endfor %}
+	</ul>
+</aside>
+{% endif %}	
+{% endmacro %}
+
 <!doctype html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>{% block title %}{% endblock %} - lutro.me</title>
+	<title>{% block title %}{% endblock %} - {{ site_title }}</title>
 	<meta name="description" content="Just another website about mostly programming.">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="alternate" type="application/rss+xml" href="{{ root_url }}/rss.xml" title="lutro.me - RSS feed">
+	<link rel="alternate" type="application/rss+xml" href="{{ root_url }}/rss.xml" title="{{ site_title }} - RSS feed">
 	<link rel="stylesheet" href="{{ root_url }}/assets/style.css?v2">
 	<link rel="icon" href="data:;base64,=">
 </head>
 <body>
 
 <div class="site-container">
-	<header class="header">
-		<a href="{{ root_url }}" class="header-left">lutro.me</a>
-		<span class="header-right">
-			<a href="{{ root_url }}/about">About me</a>
-			<a href="https://github.com/anlutro" target="_blank">GitHub</a>
-		</span>
-	</header>
 	<main class="main">
 	{% block content %}{% endblock %}
 	</main>
+	<section class="sidebar">
+		<h2>Links</h2>
+		<aside class="menu">
+			<ul>
+				<li><a href="{{ root_url }}" class="header-left">Home</a></li>
+				<li><a href="{{ root_url }}/about">About me</a></li>
+				<li><a href="https://github.com/anlutro" target="_blank">GitHub</a></li>
+				<li><a href="{{ root_url }}/rss.xml">RSS feed</a></li>
+			</ul>
+		</aside>
+
+		<h2>Stuff I've read</h2>
+		{{ links_block(prog_links, 'Programming and computers in general') }}
+		{{ links_block(other_links, 'Politics, news, philosophy, other') }}
+	</section>
 
 	<footer class="footer">
 		2012-2016 &copy; Andreas Lutro - Built with <a href="https://github.com/anlutro/russell">Russell</a>
