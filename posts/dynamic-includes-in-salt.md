@@ -47,7 +47,9 @@ any apps use them:
 
 	{% set include_plugins = [] %}
 	{% for name, app in pillar.get('uwsgi_apps', {}).items() %}
-	  {% do include_plugins.extend(app.get('plugins', [])) %}
+	  {% for plugin in app.get('plugins', []) if plugin not in include_plugins %}
+		  {% do include_plugins.append(plugin) %}
+	  {% endfor %}
 	/etc/uwsgi/{{ name }}.ini:
 	  file.managed:
 	    - source: salt://uwsgi/files/uwsgi.ini.jinja
