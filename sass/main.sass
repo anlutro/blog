@@ -59,6 +59,13 @@ a:active, a:hover
       font-size: .75em
     ul
       margin: .5em 0 0
+    li
+      margin-bottom: .5em
+      line-height: 1.5
+  .link-site, .link-date
+    display: inline-block
+    color: #999
+    font-size: .8em
   .links-title
     font-size: 1.25em
 
@@ -74,20 +81,24 @@ a:active, a:hover
 .post
   background: #fff
   padding: 3em 2em
-  border: solid 1px rgba(160, 160, 160, 0.3)
+  border: solid 1px rgba(140, 140, 140, 0.3)
   margin-bottom: 3rem
   @media screen and (min-width: $brk-large)
     padding: 3em 4em
 
-// code blocks
-pre
-  white-space: pre-wrap
-pre, pre code
-  font-size: .85em
-
 // inline code
 code
   font-size: .95em
+
+// code blocks
+pre
+  white-space: pre-wrap
+  background: #f9f9f9
+  border: 1px solid rgba(160, 160, 160, 0.2)
+  padding: .5em 1em
+  line-height: 1.5
+  code
+    font-size: .75em
 
 .post-pubdate
   font-size: .75em
