@@ -54,7 +54,7 @@ any apps use them:
 	  file.managed:
 	    - source: salt://uwsgi/files/uwsgi.ini.jinja
 	    - template: jinja
-	    - context: { app: {{ app | yaml }} }
+	    - context: { app: {{ app | json }} }
 	{% endfor %}
 
 	include:
