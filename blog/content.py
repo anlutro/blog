@@ -46,10 +46,11 @@ def make_tag(tag_name):
 
 
 class Entry():
-	def __init__(self, title, body, slug=None):
+	def __init__(self, title, body, slug=None, subtitle=None):
 		self.title = title
 		self.body = body
 		self.slug = slug or slugify.slugify(title)
+		self.subtitle = subtitle
 
 	@property
 	def url(self):
@@ -69,6 +70,8 @@ class Entry():
 				title = line.replace('#', '').strip()
 			elif line.startswith('title:'):
 				title = line[6:].strip()
+			elif line.startswith('subtitle:'):
+				kwargs['subtitle'] = line[9:].strip()
 
 			cls.process_meta(line, kwargs)
 
@@ -115,9 +118,9 @@ class Page(Entry):
 
 
 class Post(Entry):
-	def __init__(self, title, body, slug=None, pubdate=None, excerpt=None,
-			tags=None, public=True):
-		super().__init__(title, body, slug)
+	def __init__(self, title, body, slug=None, subtitle=None, pubdate=None,
+			excerpt=None, tags=None, public=True):
+		super().__init__(title, body, slug=slug, subtitle=subtitle)
 		self.excerpt = excerpt or _generate_excerpt(body)
 		self.pubdate = pubdate
 		self.tags = tags or []

@@ -1,4 +1,5 @@
 # Dangers of targetting grains in Salt
+subtitle: Or how to properly do role management with Salt
 pubdate: 2016-03-01 23:32:09 +0100
 tags: Salt
 
