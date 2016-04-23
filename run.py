@@ -23,10 +23,10 @@ blog.add_posts()
 blog.add_data()
 
 blog.generate_page('index', template='home.html.jinja',
-	posts=blog.posts[:3])
+	posts=blog.get_posts(num=3))
 
 blog.generate_page('archive', template='archive.html.jinja',
-	posts=blog.posts)
+	posts=blog.get_posts())
 
 for page in blog.pages:
 	blog.generate_page(page.slug, template='page.html.jinja',
@@ -42,4 +42,4 @@ for tag in blog.tags:
 
 blog.generate_page('links', template='links.html.jinja')
 
-blog.generate_rss('rss.xml', posts=blog.posts)
+blog.generate_rss('rss.xml', posts=blog.get_posts())

@@ -29,6 +29,15 @@ def _parse_pubdate(pubdate):
 	return None
 
 
+def _str_to_bool(string):
+	string = string.strip().lower()
+	if string in ('yes', 'true'):
+		return True
+	elif string in ('no', 'false'):
+		return False
+	return None
+
+
 def make_tag(tag_name):
 	tag_name = tag_name.strip()
 	if tag_name not in _TAGS:
@@ -132,13 +141,18 @@ class Post(Entry):
 			kwargs['tags'] = [make_tag(tag) for tag in line[5:].strip().split(',')]
 
 		elif line.startswith('public:'):
-			is_public = line[7:].strip().lower()
-			if is_public in ('yes', 'true'):
-				kwargs['public'] = True
-			elif is_public in ('no', 'false'):
-				kwargs['public'] = False
+			is_public = _str_to_bool(line[7:])
+			if is_public is None:
+				LOG.warning('found invalid public value: %s', line[7:])
 			else:
-				LOG.warning('found invalid public value: %s', is_public)
+				kwargs['public'] = is_public
+
+		elif line.startswith('private:'):
+			is_private = _str_to_bool(line[7:])
+			if is_private is None:
+				LOG.warning('found invalid private value: %s', line[7:])
+			else:
+				kwargs['public'] = not is_private
 
 	@property
 	def url(self):
