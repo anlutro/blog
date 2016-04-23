@@ -4,7 +4,7 @@ _Jump to: [health and armor](#healthandarmor), [weapons](#weapons), [tactics](#t
 
 Quake Live is one of those games that's a bit hard to get into, and how to play it is not always intuitive. In SC2 you can simply buy the game, create an account and start playing and learn as you go along, or you can go to TeamLiquid.net and watch countless streams for entertainment or education - not quite so with Quake Live. Therefore, this is meant as a guide to new players or spectators who have already "decided" that Quake Live is a game they want to get into.
 
-If you're not yet sure if you want to get into Quake, I recommend you check out my [introduction to Quake Live](//www.lutro.me/ql/intro/) for some entertaining and educational videos and guides - they are easier to digest than this massive and in-depth wall of text!
+If you're not yet sure if you want to get into Quake, I recommend you check out my [introduction to Quake Live](//www.lutro.me/quake-live-introduction) for some entertaining and educational videos and guides - they are easier to digest than this massive and in-depth wall of text!
 
 Very short about my "qualifications" in Quake: I was at best low-mid level dueller who got into Quake Live when it launched. I'd started playing Quake 3 CPMA some months beforehand. I've no delusions about being a particularily good quake player, but consider myself a fairly decent teacher and writer, which is what made me want to write this.
 
