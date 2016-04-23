@@ -7,6 +7,9 @@
 			<span class="post-pubdate">{{ post.pubdate.strftime('%B %d, %Y') }}</span>
 			<h2 class="post-title">
 				<a href="{{ root_url }}/posts/{{ post.slug }}">{{ post.title }}</a>
+			{%- if post.subtitle %}
+				<small>{{ post.subtitle }}</small>
+			{%- endif %}
 			</h2>
 		</header>
 		<div class="post-body">

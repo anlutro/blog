@@ -7,6 +7,9 @@
 		<header class="page-header">
 			<h2 class="page-title">
 				{{ page.title }}
+			{%- if page.subtitle %}
+				<small>{{ page.subtitle }}</small>
+			{%- endif %}
 			</h2>
 		</header>
 		<div class="page-body">
