@@ -3,5 +3,6 @@
 /lib
 /dist
 /pip-selfcheck.json
+/.cache
 *.pyc
 __pycache__

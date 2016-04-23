@@ -1,22 +1,25 @@
 {% extends 'layout.html.jinja' %}
 {% block title %}{{ post.title }}{% endblock %}
 {% block content %}
-<article class="post">
-	<header class="post-header">
-		<h1 class="post-title">{{ post.title }}</h1>
-		<span class="post-pubdate">{{ post.pubdate.strftime('%B %d, %Y') }}</span>
-	</header>
-	<div class="post-body">
-		{{ post.body }}
-	</div>
-	<footer class="post-footer">
-		{% if post.tags %}
-		<p class="post-tags">
-			Tags: {{ post.tag_links | join(', ') }}
-		</p>
-		{% endif %}
-	</footer>
-</article>
+
+	<article class="post">
+		<header class="post-header">
+			<span class="post-pubdate">{{ post.pubdate.strftime('%B %d, %Y') }}</span>
+			<h2 class="post-title">
+				{{ post.title }}
+			</h2>
+		</header>
+		<div class="post-body">
+			{{ post.body }}
+		</div>
+		<footer class="post-footer">
+			{% if post.tags %}
+			<p class="post-tags">
+				Tags: {{ post.tag_links | join(', ') }}
+			</p>
+			{% endif %}
+		</footer>
+	</article>
 
 <div id="disqus_thread" class="comments"></div>
 <script type="text/javascript">

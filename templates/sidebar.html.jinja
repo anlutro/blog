@@ -1,0 +1,37 @@
+{% macro links_block(links, title) %}
+{% if links %}
+<aside class="links">
+	<h3 class="links-title">{{ title }}</h2>
+	<ul>
+	{% for link in links[:5] %}
+		<li>
+			<a href="{{ link.url }}">{{ link.title }}</a>
+			<span class="link-site">{{ link.url | extract_domain }}</span>
+			<span class="link-date">{{ link.date }}</span>
+		</li>
+	{% endfor %}
+	</ul>
+{#
+	{% if links | length > 5 %}
+	<a href="{{ root_url }}/links/other" class="links-all">More</a>
+	{% endif %}
+#}
+</aside>
+{% endif %}	
+{% endmacro -%}
+
+<h1><a href="{{ root_url }}">lutro.me</a></h1>
+<small>Andreas Lutro</small>
+
+<aside class="menu">
+	<ul>
+		<li><a href="{{ root_url }}/about">About me</a></li>
+		<li><a href="https://github.com/anlutro" target="_blank">GitHub</a></li>
+		<li><a href="https://twitter.com/AndreasLutro" target="_blank">Twitter</a></li>
+		<li><a href="{{ root_url }}/rss.xml">RSS feed</a></li>
+	</ul>
+</aside>
+
+<h2>Stuff I've read</h2>
+{{ links_block(prog_links, 'Software and computers') }}
+{{ links_block(other_links, 'Politics and news') }}

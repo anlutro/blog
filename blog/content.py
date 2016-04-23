@@ -124,11 +124,9 @@ class Post(Entry):
 			if pubdate:
 				kwargs['pubdate'] = pubdate
 			else:
-				LOG.warning('while parsing post "%s", found invalid pubdate: "%s"',
-					title, pubdate_str)
+				LOG.warning('found invalid pubdate: "%s"', pubdate_str)
 			if not pubdate.tzinfo:
-				LOG.warning('while parsing post "%s", found pubdate without timezone: "%s"',
-					title, pubdate_str)
+				LOG.warning('found pubdate without timezone: "%s"', pubdate_str)
 
 		elif line.startswith('tags:'):
 			kwargs['tags'] = [make_tag(tag) for tag in line[5:].strip().split(',')]
@@ -140,8 +138,7 @@ class Post(Entry):
 			elif is_public in ('no', 'false'):
 				kwargs['public'] = False
 			else:
-				LOG.warning('while parsing post "%s", found invalid public value: %s',
-					title, is_public)
+				LOG.warning('found invalid public value: %s', is_public)
 
 	@property
 	def url(self):
