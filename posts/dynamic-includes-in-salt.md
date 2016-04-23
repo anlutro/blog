@@ -21,7 +21,7 @@ applications:
 	  file.managed:
 	    - source: salt://uwsgi/files/uwsgi.ini.jinja
 	    - template: jinja
-	    - context: { app: {{ app | yaml }} }
+	    - context: { app: {{ app | json }} }
 	{% endfor %}
 
 Obviously missing from this example is how to get the source code for the uWSGI
