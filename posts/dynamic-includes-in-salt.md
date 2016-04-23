@@ -34,10 +34,10 @@ top of the SLS:
 
 	include:
 	  - uwsgi.install
-	  - uwsgi.plugins.perl
+	  - uwsgi.plugins.psgi # perl
 	  - uwsgi.plugins.python2
 	  - uwsgi.plugins.python3
-	  - uwsgi.plugins.ruby
+	  - uwsgi.plugins.rack # ruby
 
 	{% for name, app in pillar.get('uwsgi_apps', {}).items() %}
 	...
