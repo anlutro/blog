@@ -10,7 +10,7 @@ Python and other programming languages, the includes don't need (it's not even
 considered best practice) to be defined at the top of the file. Realizing this
 opens some opportunities.
 
-For example, consider a state file `uwsgi/apps.sls` that sets up various UWSGI
+For example, consider a state file `uwsgi/apps.sls` that sets up various uWSGI
 applications:
 
 	include:
@@ -24,11 +24,11 @@ applications:
 	    - context: { app: {{ app | yaml }} }
 	{% endfor %}
 
-Obviously missing from this example is how to get the source code for the UWSGI
+Obviously missing from this example is how to get the source code for the uWSGI
 applications, and setting up a systemd/supervisord service that keeps the app
 running. Ignore that.
 
-UWSGI apps can be of many types: Ruby, Python (both v2 and v3), Perl, you name
+uWSGI apps can be of many types: Ruby, Python (both v2 and v3), Perl, you name
 it. How do we deal with this? We could just include all the plugin types at the
 top of the SLS:
 

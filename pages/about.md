@@ -18,7 +18,7 @@ specifications, design and programming of back-end services, integration with
 a variety of third-party services, and front-end client code.
 
 Linux systems administration - management of web services through Nginx, Apache
-and their assorted FastCGI handlers: PHP-FPM, UWSGI for Ruby/Python. Monitoring,
+and their assorted FastCGI handlers: PHP-FPM, uWSGI for Ruby/Python. Monitoring,
 statistics collection, log collection, management of database services (MySQL
 and Postgres), queue services and workers, and more.
 
