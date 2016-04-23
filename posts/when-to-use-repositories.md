@@ -1,6 +1,6 @@
 # When to use repositories?
 pubdate: 2013-09-30 12:00:00 +0100
-tags: Laravel, PHP
+tags: Laravel, PHP, Code design
 
 Repositories have their place in applications that deal with fetching stuff - either if it's from a database or an external source. In the Laravel world the repository pattern has been praised a bit too much for its advantages in terms of testability and architecture. I've written about how you can achieve the same level of testability without repositories, but sometimes repositories really are recommended.
 
