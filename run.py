@@ -38,7 +38,7 @@ for post in blog.posts:
 
 for tag in blog.tags:
 	blog.generate_page(['tags', tag.slug], template='archive.html.jinja',
-		posts=blog.get_posts(tag=tag))
+		posts=blog.get_posts(tag=tag, private=True))
 
 blog.generate_page('links', template='links.html.jinja')
 
