@@ -30,6 +30,7 @@ class BlogEngine():
 		self.root_path = root_path
 		self.site_title = site_title
 		self.root_url = root_url
+		blog.content.ROOT_URL = root_url
 
 		self.jinja = jinja2.Environment(
 			loader=jinja2.FileSystemLoader(os.path.join(root_path, 'templates')),
