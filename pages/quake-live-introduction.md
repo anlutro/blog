@@ -1,4 +1,5 @@
 # Introduction to Quake Live
+comments: true
 
 ## Welcome!
 Quake Live is the most awesome FPS around today - and hardly anyone plays it. If you can get over the initial learning curve, there's no other game that's as exciting, fun and rewarding as Quake Live. No other game is as well-made for high-level competition - a 10 minute game between two top level players will leave you gaping at the moves they're pulling off. And yet, both player and stream viewer numbers are incredibly low.

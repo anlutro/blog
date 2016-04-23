@@ -72,6 +72,10 @@ class Entry():
 				title = line[6:].strip()
 			elif line.startswith('subtitle:'):
 				kwargs['subtitle'] = line[9:].strip()
+			elif line.startswith('comments:'):
+				comments_enabled = _str_to_bool(line[9:])
+				if comments_enabled is not None:
+					kwargs['comments'] = comments_enabled
 
 			cls.process_meta(line, kwargs)
 
@@ -114,17 +118,20 @@ class Entry():
 
 
 class Page(Entry):
-	pass
+	def __init__(self, title, body, slug=None, subtitle=None, comments=False):
+		super().__init__(title, body, slug=slug, subtitle=subtitle)
+		self.comments = comments
 
 
 class Post(Entry):
 	def __init__(self, title, body, slug=None, subtitle=None, pubdate=None,
-			excerpt=None, tags=None, public=True):
+			excerpt=None, tags=None, public=True, comments=True):
 		super().__init__(title, body, slug=slug, subtitle=subtitle)
 		self.excerpt = excerpt or _generate_excerpt(body)
 		self.pubdate = pubdate
 		self.tags = tags or []
 		self.public = public
+		self.comments = comments
 
 	@classmethod
 	def process_meta(cls, line, kwargs):

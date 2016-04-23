@@ -25,6 +25,7 @@
 		</footer>
 	</article>
 
+{% if post.comments %}
 <div id="disqus_thread" class="comments"></div>
 <script type="text/javascript">
 var disqus_shortname = 'lutro';
@@ -40,5 +41,8 @@ var disqus_title = '{{ post.title }}';
 })();
 </script>
 <noscript>Comments are powered by Disqus and require Javascript to be enabled.</noscript>
+{% else %}
+<p class="comments_closed">Comments are closed for this post.</p>
+{% endif %}
 
 {% endblock %}

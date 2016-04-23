@@ -1,4 +1,5 @@
 # Beginner's guide to Quake Live
+comments: true
 
 _Jump to: [health and armor](#healthandarmor), [weapons](#weapons), [tactics](#tactics), [how to play](#playing), [configuring](#config), [improving](#improve)_
 
