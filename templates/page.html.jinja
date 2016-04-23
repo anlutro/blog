@@ -1,12 +1,15 @@
 {% extends 'layout.html.jinja' %}
 {% block title %}{{ page.title }}{% endblock %}
 {% block content %}
-<article class="page">
-	<header class="page-header">
-		<h2 class="page-title">{{ page.title }}</h1>
-	</header>
-	<div class="page-body">
-		{{ page.body }}
-	</div>
-</article>
+
+	<article class="page">
+		<header class="page-header">
+			<h2 class="page-title">
+				{{ page.title }}
+			</h2>
+		</header>
+		<div class="page-body">
+			{{ page.body }}
+		</div>
+	</article>
 {% endblock %}
