@@ -32,18 +32,19 @@ class BlogEngine():
 		self.root_url = root_url
 		blog.content.ROOT_URL = root_url
 
+		self.pages = []
+		self.posts = []
+		self.tags = set()
+		self.data = {}
+
 		self.jinja = jinja2.Environment(
 			loader=jinja2.FileSystemLoader(os.path.join(root_path, 'templates')),
 		)
 		self.jinja.globals.update({
 			'site_title': self.site_title,
 			'root_url': self.root_url,
+			'tags': self.tags,
 		})
-
-		self.pages = []
-		self.posts = []
-		self.tags = set()
-		self.data = {}
 
 	def add_pages(self, path='pages'):
 		path = os.path.join(self.root_path, path)
