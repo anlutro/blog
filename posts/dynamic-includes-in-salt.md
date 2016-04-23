@@ -45,10 +45,10 @@ top of the SLS:
 But it'd be nicer if we could include the plugins dynamically, based on whether
 any apps use them:
 
-	{% set include_plugins = [] %}
+	{% set plugins = [] %}
 	{% for name, app in pillar.get('uwsgi_apps', {}).items() %}
-	  {% for plugin in app.get('plugins', []) if plugin not in include_plugins %}
-		  {% do include_plugins.append(plugin) %}
+	  {% for plugin in app.get('plugins', []) if plugin not in plugins %}
+		  {% do plugins.append(plugin) %}
 	  {% endfor %}
 	/etc/uwsgi/{{ name }}.ini:
 	  file.managed:
@@ -59,6 +59,6 @@ any apps use them:
 
 	include:
 	  - uwsgi.install
-	{% for sls in include_plugins %}
-	  - uwsgi.plugin.{{ sls }}
+	{% for plugin in plugins %}
+	  - uwsgi.plugin.{{ plugin }}
 	{% endfor %}
