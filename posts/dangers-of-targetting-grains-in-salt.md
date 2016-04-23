@@ -51,14 +51,34 @@ the environment and datacenter of the host.
 If you want to avoid duplication between state and pillar top.sls files, you can
 consider rendering your state top.sls based on pillar data, like this:
 
+	# pillar top.sls
+	'saltmaster*':
+	  - roles.salt_master
+	'*':
+	  - roles.salt_minion
+
+	# pillar roles/salt_master.sls
+	states:
+	  salt.master: true
+
+	# pillar roles/salt_minion.sls
+	states:
+	  salt.minon: true
+
 	# state top.sls
 	{{ grains.id }}:
 	  {% for state in pillar.get('states', []) %}
 	   - {{ state }}
 	  {% endfor %}
 
+Note how we use hostname matching to apply roles (roles being simply a set of
+pillar data). We then define which states the role includes in these role pillar
+files - we use a dictionary because unlike lists (at least until very recently),
+dictionaries are merged instead of overwritten. It also enables us to write a
+pillar to disable a state set by another pillar, if necessary.
+
 As opposed to grains, this is secure, because pillar data is rendered entirely
-on the master side and cannot be tampered with by the minion. 
+on the master side and cannot be tampered with by the minion.
 
 There will be some exceptions, situations where the hostname alone simply can't
 convey enough information, and you don't want to enter each individual host into
@@ -68,10 +88,10 @@ may run various types of web applications:
 
 	'app* and G@app_type:php':
 	  - match: compound
-	  - php
+	  - roles.webserver_php
 	'app* and G@app_type:python':
 	  - match: compound
-	  - python
+	  - roles.webserver_python
 
 This is relatively safe because installing PHP instead of/in addition to Python
 on an app server won't damage anything outside of the compromised host. Also,
