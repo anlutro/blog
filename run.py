@@ -3,9 +3,12 @@
 import argparse
 import os
 import os.path
+import logging
 from blog.engine import BlogEngine
 
 ROOT_DIR = os.path.dirname(__file__)
+
+logging.basicConfig()
 
 def _extract_domain(value):
 	value = value.split('//', 1)[1]
