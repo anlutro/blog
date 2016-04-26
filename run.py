@@ -50,4 +50,5 @@ blog.generate_rss('rss.xml', posts=blog.get_posts())
 
 blog.write_file('robots.txt', 'User-agent: *\nDisallow:\n')
 
-blog.write_file('sitemap.xml', generate_sitemap(blog))
+if not args.root_url.startswith('file://'):
+	blog.write_file('sitemap.xml', generate_sitemap(blog, https=True))
