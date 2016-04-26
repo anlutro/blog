@@ -5,6 +5,7 @@ import os
 import os.path
 import logging
 from blog.engine import BlogEngine
+from blog.sitemap import generate_sitemap
 
 ROOT_DIR = os.path.dirname(__file__)
 
@@ -48,3 +49,5 @@ blog.generate_page('links', template='links.html.jinja')
 blog.generate_rss('rss.xml', posts=blog.get_posts())
 
 blog.write_file('robots.txt', 'User-agent: *\nDisallow:\n')
+
+blog.write_file('sitemap.xml', generate_sitemap(blog))

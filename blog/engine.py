@@ -134,5 +134,9 @@ class BlogEngine():
 
 	def write_file(self, path, contents):
 		path = self._get_dist_path(path)
-		with open(path, 'w+') as file:
+		if isinstance(contents, bytes):
+			mode = 'wb+'
+		else:
+			mode = 'w'
+		with open(path, mode) as file:
 			file.write(contents)
