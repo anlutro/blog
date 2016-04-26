@@ -25,6 +25,15 @@ def _parse_data_file(path):
 	raise ValueError('Do not know how to parse data file: ' + path)
 
 
+def _rss_item(post):
+	return PyRSS2Gen.RSSItem(
+		title=post.title,
+		description=post.excerpt,
+		link=post.url,
+		pubDate=post.pubdate,
+	)
+
+
 class BlogEngine():
 	def __init__(self, root_path, site_title, root_url):
 		self.root_path = root_path
@@ -111,22 +120,19 @@ class BlogEngine():
 			file.write(template.render(**kwargs))
 
 	def generate_rss(self, path, posts):
-		def rss_item(post):
-			return PyRSS2Gen.RSSItem(
-				title=post.title,
-				description=post.excerpt,
-				link=post.url,
-				pubDate=post.pubdate,
-			)
-
 		rss = PyRSS2Gen.RSS2(
 			title=self.site_title,
 			description='',
 			link=self.root_url,
 			lastBuildDate=datetime.datetime.now(),
-			items=[rss_item(post) for post in posts],
+			items=[_rss_item(post) for post in posts],
 		)
 
 		path = self._get_dist_path(path)
 		with open(path, 'w') as file:
 			rss.write_xml(file)
+
+	def write_file(self, path, contents):
+		path = self._get_dist_path(path)
+		with open(path, 'w+') as file:
+			file.write(contents)

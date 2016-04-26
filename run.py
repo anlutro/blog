@@ -46,3 +46,5 @@ for tag in blog.tags:
 blog.generate_page('links', template='links.html.jinja')
 
 blog.generate_rss('rss.xml', posts=blog.get_posts())
+
+blog.write_file('robots.txt', 'User-agent: *\nDisallow:\n')
