@@ -129,7 +129,7 @@ class BlogEngine():
 		)
 
 		path = self._get_dist_path(path)
-		with open(path, 'w') as file:
+		with open(path, 'w+') as file:
 			rss.write_xml(file)
 
 	def write_file(self, path, contents):
