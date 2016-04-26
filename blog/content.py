@@ -207,7 +207,7 @@ class ContentManager:
 	def make_tag(self, tag_name):
 		tag_name = tag_name.strip()
 		if tag_name not in self.tags_dict:
-			self.tags_dict[tag_name] = Tag(tag_name)
+			self.tags_dict[tag_name] = self.Tag(tag_name)
 		return self.tags_dict[tag_name]
 
 	def add_pages(self, pages, resort=True):
