@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 import logging
 import os.path
 
@@ -6,12 +6,11 @@ import markdown
 import slugify
 
 LOG = logging.getLogger(__name__)
-ROOT_URL = '//localhost'
-_TAGS = {}
 
 
 def _generate_excerpt(body):
 	excerpt_parts = []
+	# iterate through lines until we find an empty line/two newlines in a row
 	for line in body.splitlines():
 		if line == '':
 			break
@@ -23,29 +22,32 @@ def _parse_pubdate(pubdate):
 	formats = ('%Y-%m-%d %H:%M:%S %z', '%Y-%m-%d %H:%M:%S', '%Y-%m-%d')
 	for dateformat in formats:
 		try:
-			return datetime.datetime.strptime(pubdate, dateformat)
+			return datetime.strptime(pubdate, dateformat)
 		except ValueError:
 			pass
-	return None
+	raise ValueError('Could not datetime.strptime {}'.format(repr(pubdate)))
 
 
 def _str_to_bool(string):
-	string = string.strip().lower()
-	if string in ('yes', 'true'):
+	norm_string = str(string).strip().lower()
+	if norm_string in ('yes', 'true'):
 		return True
-	elif string in ('no', 'false'):
+	elif norm_string in ('no', 'false', ''):
 		return False
-	return None
+	raise ValueError('Invalid boolean string: {}'.format(repr(string)))
 
 
-def make_tag(tag_name):
-	tag_name = tag_name.strip()
-	if tag_name not in _TAGS:
-		_TAGS[tag_name] = Tag(tag_name)
-	return _TAGS[tag_name]
+class Content:
+	cm = None
+
+	@property
+	def root_url(self):
+		if self.cm:
+			return self.cm.root_url
+		return '//localhost'
 
 
-class Entry():
+class Entry(Content):
 	def __init__(self, title, body, slug=None, subtitle=None):
 		self.title = title
 		self.body = body
@@ -54,10 +56,10 @@ class Entry():
 
 	@property
 	def url(self):
-		return ROOT_URL + '/' + self.slug
+		return self.root_url + '/' + self.slug
 
 	@classmethod
-	def from_file_contents(cls, contents, kwargs=None):
+	def from_string(cls, contents, kwargs=None):
 		if kwargs is None:
 			kwargs = {}
 
@@ -67,15 +69,16 @@ class Entry():
 		line = lines.pop(0)
 		while line != '':
 			if not title and line.startswith('#'):
-				title = line.replace('#', '').strip()
+				title = line[1:].strip()
 			elif line.startswith('title:'):
 				title = line[6:].strip()
 			elif line.startswith('subtitle:'):
 				kwargs['subtitle'] = line[9:].strip()
 			elif line.startswith('comments:'):
-				comments_enabled = _str_to_bool(line[9:])
-				if comments_enabled is not None:
-					kwargs['comments'] = comments_enabled
+				try:
+					kwargs['allow_comments'] = _str_to_bool(line[9:])
+				except ValueError:
+					LOG.warning('invalid boolean value for comments', exc_info=True)
 
 			cls.process_meta(line, kwargs)
 
@@ -83,7 +86,7 @@ class Entry():
 
 		# the only lines left should be the actual contents
 		body = '\n'.join(lines).strip()
-		if cls is Post:
+		if issubclass(cls, Post):
 			kwargs['excerpt'] = markdown.markdown(
 				_generate_excerpt(body)
 			)
@@ -107,31 +110,37 @@ class Entry():
 		kwargs['slug'] = os.path.splitext(os.path.basename(path))[0]
 
 		# if a pubdate wasn't found, use the file's last modified time
-		if cls is Post and not kwargs.get('pubdate'):
+		if issubclass(cls, Post) and not kwargs.get('pubdate'):
 			timestamp = min(os.path.getctime(path), os.path.getmtime(path))
-			kwargs['pubdate'] = datetime.datetime.fromtimestamp(timestamp)
+			kwargs['pubdate'] = datetime.fromtimestamp(timestamp)
 
 		with open(path, 'r') as file:
-			entry = cls.from_file_contents(file.read(), kwargs)
+			entry = cls.from_string(file.read(), kwargs)
 
 		return entry
 
 
 class Page(Entry):
-	def __init__(self, title, body, slug=None, subtitle=None, comments=False):
+	def __init__(self, title, body, slug=None, subtitle=None, allow_comments=False):
 		super().__init__(title, body, slug=slug, subtitle=subtitle)
-		self.comments = comments
+		self.allow_comments = allow_comments
 
 
 class Post(Entry):
 	def __init__(self, title, body, slug=None, subtitle=None, pubdate=None,
-			excerpt=None, tags=None, public=True, comments=True):
+			excerpt=None, tags=None, public=True, allow_comments=True):
 		super().__init__(title, body, slug=slug, subtitle=subtitle)
 		self.excerpt = excerpt or _generate_excerpt(body)
 		self.pubdate = pubdate
 		self.tags = tags or []
 		self.public = public
-		self.comments = comments
+		self.allow_comments = allow_comments
+
+	@classmethod
+	def make_tag(cls, tag_name):
+		if cls.cm:
+			return cls.cm.make_tag(tag_name)
+		return Tag(tag_name.strip())
 
 	@classmethod
 	def process_meta(cls, line, kwargs):
@@ -139,49 +148,79 @@ class Post(Entry):
 
 		if line.startswith('pubdate:'):
 			pubdate_str = line[8:].strip()
-			pubdate = _parse_pubdate(pubdate_str)
-			if pubdate:
-				kwargs['pubdate'] = pubdate
-			else:
-				LOG.warning('found invalid pubdate: "%s"', pubdate_str)
-			if not pubdate.tzinfo:
+			try:
+				kwargs['pubdate'] = _parse_pubdate(pubdate_str)
+			except ValueError:
+				LOG.warning('invalid pubdate given', exc_info=True)
+			if 'pubdate' in kwargs and not kwargs['pubdate'].tzinfo:
 				LOG.warning('found pubdate without timezone: "%s"', pubdate_str)
 
 		elif line.startswith('tags:'):
-			kwargs['tags'] = [make_tag(tag) for tag in line[5:].strip().split(',')]
+			line_tags = line[5:].strip().split(',')
+			kwargs['tags'] = [cls.make_tag(tag) for tag in line_tags]
 
 		elif line.startswith('public:'):
-			is_public = _str_to_bool(line[7:])
-			if is_public is None:
-				LOG.warning('found invalid public value: %s', line[7:])
-			else:
-				kwargs['public'] = is_public
+			try:
+				kwargs['public'] = _str_to_bool(line[7:])
+			except ValueError:
+				LOG.warning('invalid boolean value for public', exc_info=True)
 
 		elif line.startswith('private:'):
-			is_private = _str_to_bool(line[7:])
-			if is_private is None:
-				LOG.warning('found invalid private value: %s', line[7:])
-			else:
-				kwargs['public'] = not is_private
+			try:
+				kwargs['private'] = not _str_to_bool(line[7:])
+			except ValueError:
+				LOG.warning('invalid boolean value for private', exc_info=True)
 
 	@property
 	def url(self):
-		return ROOT_URL + '/posts/' + self.slug
+		return self.root_url + '/posts/' + self.slug
 
 	@property
 	def tag_links(self):
 		return ['<a href="' + tag.url + '">' + tag.title + '</a>' for tag in self.tags]
 
 
-class Tag:
+class Tag(Content):
 	def __init__(self, title, slug=None):
 		self.title = title
 		self.slug = slug or slugify.slugify(title)
 
 	@property
 	def url(self):
-		return ROOT_URL + '/tags/' + self.slug
+		return self.root_url + '/tags/' + self.slug
 
 	def __lt__(self, other):
 		return self.slug < other.slug
 
+
+class ContentManager:
+	def __init__(self, root_url):
+		self.Page = type('CM_Page', (Page,), {'cm': self})
+		self.Post = type('CM_Post', (Post,), {'cm': self})
+		self.Tag = type('CM_Tag', (Tag,), {'cm': self})
+		self.root_url = root_url
+		self.pages = []
+		self.posts = []
+		self.tags = set()
+		self.tags_dict = {}
+
+	def make_tag(self, tag_name):
+		tag_name = tag_name.strip()
+		if tag_name not in self.tags_dict:
+			self.tags_dict[tag_name] = Tag(tag_name)
+		return self.tags_dict[tag_name]
+
+	def add_pages(self, pages, resort=True):
+		self.pages.extend(pages)
+		if resort:
+			self.pages.sort(key=lambda page: page.title)
+
+	def add_posts(self, posts, resort=True):
+		self.posts.extend(posts)
+		for post in posts:
+			for tag in post.tags:
+				self.tags.add(tag)
+
+		if resort:
+			self.posts.sort(key=lambda post: post.title)
+			self.posts.sort(key=lambda post: post.pubdate, reverse=True)

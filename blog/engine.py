@@ -34,16 +34,17 @@ def _rss_item(post):
 	)
 
 
-class BlogEngine():
+class BlogEngine:
 	def __init__(self, root_path, site_title, root_url):
 		self.root_path = root_path
 		self.site_title = site_title
 		self.root_url = root_url
-		blog.content.ROOT_URL = root_url
 
-		self.pages = []
-		self.posts = []
-		self.tags = set()
+		self.cm = blog.content.ContentManager(root_url)
+		self.pages = self.cm.pages
+		self.posts = self.cm.posts
+		self.tags = self.cm.tags
+
 		self.data = {}
 
 		self.jinja = jinja2.Environment(
@@ -57,27 +58,17 @@ class BlogEngine():
 
 	def add_pages(self, path='pages'):
 		path = os.path.join(self.root_path, path)
-		self.pages.extend([
-			blog.content.Page.from_file(file)
+		self.cm.add_pages([
+			self.cm.Page.from_file(file)
 			for file in _listfiles(path)
 		])
 
-		self.pages.sort(key=lambda page: page.title)
-
 	def add_posts(self, path='posts'):
 		path = os.path.join(self.root_path, path)
-		posts = [
-			blog.content.Post.from_file(file)
+		self.cm.add_posts([
+			self.cm.Post.from_file(file)
 			for file in _listfiles(path)
-		]
-
-		for post in posts:
-			self.posts.append(post)
-			for tag in post.tags:
-				self.tags.add(tag)
-
-		self.posts.sort(key=lambda post: post.title)
-		self.posts.sort(key=lambda post: post.pubdate, reverse=True)
+		])
 
 	def add_data(self, path='data'):
 		path = os.path.join(self.root_path, path)
@@ -90,7 +81,7 @@ class BlogEngine():
 			self.jinja.globals[key] = self.data[key]
 
 	def get_posts(self, num=None, tag=None, private=False):
-		posts = self.posts
+		posts = self.posts.copy()
 		if not private:
 			posts = [post for post in posts if post.public]
 		if tag:
