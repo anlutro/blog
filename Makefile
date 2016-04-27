@@ -1,5 +1,7 @@
 cmd = ./run.py
 
+default: local css
+
 clean:
 	rm -rf dist/*
 
