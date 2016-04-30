@@ -90,9 +90,6 @@ class BlogEngine:
 			return posts[:num]
 		return posts
 
-	def get_tags(self):
-		return sorted(list(self.tags))
-
 	def _get_dist_path(self, path):
 		if isinstance(path, str):
 			path = [path]

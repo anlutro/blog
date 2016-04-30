@@ -1,3 +1,4 @@
+from datetime import datetime
 import blog.content
 
 
@@ -51,3 +52,36 @@ def test_content_manager_tags():
 	post2 = cm.Post.from_string(md)
 	assert post1.tags[0] is post2.tags[0]
 	assert post1.tags[1] is post2.tags[1]
+
+
+def test_page_sort():
+	pages = sorted([
+		blog.content.Page('b', ''),
+		blog.content.Page('c', ''),
+		blog.content.Page('a', ''),
+	])
+	assert pages[0].title == 'a'
+	assert pages[1].title == 'b'
+	assert pages[2].title == 'c'
+
+
+def test_post_sort():
+	posts = sorted([
+		blog.content.Post('b', ''),
+		blog.content.Post('c', ''),
+		blog.content.Post('a', ''),
+	])
+	assert posts[0].title == 'a'
+	assert posts[1].title == 'b'
+	assert posts[2].title == 'c'
+
+
+def test_post_sort_pubdate():
+	posts = sorted([
+		blog.content.Post('a', '', pubdate=datetime(2016, 2, 1, 1, 1, 1)),
+		blog.content.Post('b', '', pubdate=datetime(2016, 1, 1, 1, 1, 1)),
+		blog.content.Post('c', '', pubdate=datetime(2016, 3, 1, 1, 1, 1)),
+	])
+	assert posts[0].title == 'c'
+	assert posts[1].title == 'a'
+	assert posts[2].title == 'b'

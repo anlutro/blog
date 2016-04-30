@@ -119,6 +119,9 @@ class Entry(Content):
 
 		return entry
 
+	def __lt__(self, other):
+		return self.title < other.title
+
 
 class Page(Entry):
 	def __init__(self, title, body, slug=None, subtitle=None, allow_comments=False):
@@ -179,6 +182,11 @@ class Post(Entry):
 	def tag_links(self):
 		return ['<a href="' + tag.url + '">' + tag.title + '</a>' for tag in self.tags]
 
+	def __lt__(self, other):
+		if self.pubdate == other.pubdate:
+			return self.title < other.title
+		return self.pubdate > other.pubdate
+
 
 class Tag(Content):
 	def __init__(self, title, slug=None):
@@ -190,7 +198,7 @@ class Tag(Content):
 		return self.root_url + '/tags/' + self.slug
 
 	def __lt__(self, other):
-		return self.slug < other.slug
+		return self.title < other.title
 
 
 class ContentManager:
@@ -201,7 +209,7 @@ class ContentManager:
 		self.root_url = root_url
 		self.pages = []
 		self.posts = []
-		self.tags = set()
+		self.tags = []
 		self.tags_dict = {}
 
 	def make_tag(self, tag_name):
@@ -213,14 +221,15 @@ class ContentManager:
 	def add_pages(self, pages, resort=True):
 		self.pages.extend(pages)
 		if resort:
-			self.pages.sort(key=lambda page: page.title)
+			self.pages.sort()
 
 	def add_posts(self, posts, resort=True):
 		self.posts.extend(posts)
 		for post in posts:
 			for tag in post.tags:
-				self.tags.add(tag)
+				if tag not in self.tags:
+					self.tags.append(tag)
 
 		if resort:
-			self.posts.sort(key=lambda post: post.title)
-			self.posts.sort(key=lambda post: post.pubdate, reverse=True)
+			self.tags.sort()
+			self.posts.sort()
