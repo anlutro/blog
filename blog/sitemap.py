@@ -21,7 +21,7 @@ class SitemapGenerator:
 		tree.append(self.get_index_element(self.blog.root_url))
 		for page in self.blog.pages:
 			tree.append(self.get_page_element(page))
-		for tag in self.blog.tags:
+		for tag in self.blog.get_tags():
 			tree.append(self.get_tag_element(tag))
 		for post in self.blog.get_posts():
 			tree.append(self.get_post_element(post))
