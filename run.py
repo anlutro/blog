@@ -23,7 +23,8 @@ blog = BlogEngine(ROOT_DIR, site_title='lutro.me', root_url=args.root_url)
 blog.jinja.filters['extract_domain'] = _extract_domain
 blog.add_pages()
 blog.add_posts()
-blog.add_data()
+blog.add_data_files()
+blog.add_asset_hashes()
 
 blog.generate_page('index', template='home.html.jinja',
 	posts=blog.get_posts(num=3))

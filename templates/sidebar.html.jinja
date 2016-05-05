@@ -5,7 +5,7 @@
 	<ul>
 	{% for link in links[:5] %}
 		<li>
-			<a href="{{ link.url }}" target="_blank" rel="noopener noreferrer">{{ link.title }}</a>
+			{{ a(link.title, link.url, blank=true) }}
 			<span class="link-site">{{ link.url | extract_domain }}</span>
 			<span class="link-date">{{ link.date }}</span>
 		</li>
@@ -26,8 +26,8 @@
 <aside class="menu">
 	<ul>
 		<li><a href="{{ root_url }}/about">About me</a></li>
-		<li><a href="https://github.com/anlutro" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-		<li><a href="https://twitter.com/AndreasLutro" target="_blank" rel="noopener noreferrer">Twitter</a></li>
+		<li>{{ a('GitHub', 'https://github.com/anlutro', blank=true) }}</li>
+		<li>{{ a('Twitter', 'https://twitter.com/AndreasLutro', blank=true) }}</li>
 		<li><a href="{{ root_url }}/rss.xml">RSS feed</a></li>
 	</ul>
 </aside>

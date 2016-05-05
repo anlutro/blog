@@ -1,4 +1,6 @@
 import datetime
+import hashlib
+import logging
 import os
 import os.path
 
@@ -7,6 +9,8 @@ import PyRSS2Gen
 import yaml
 
 import blog.content
+
+LOG = logging.getLogger(__name__)
 
 
 def _listfiles(root_dir):
@@ -51,10 +55,24 @@ class BlogEngine:
 			loader=jinja2.FileSystemLoader(os.path.join(root_path, 'templates')),
 		)
 		self.jinja.globals.update({
-			'site_title': self.site_title,
+			'a': self.get_link,
+			'asset_url': self.get_asset_url,
 			'root_url': self.root_url,
+			'site_title': self.site_title,
 			'tags': self.tags,
 		})
+
+	def get_asset_url(self, path):
+		url = self.root_url + '/assets/' + path
+		if 'asset_hash' in self.data and path in self.data['asset_hash']:
+			url += '?' + self.data['asset_hash'][path]
+		return url
+
+	def get_link(self, title, url, blank=None):
+		attrs = ''
+		if blank:
+			attrs += ' target="_blank" rel="noopener noreferrer"'
+		return '<a href="{}"{}>{}</a>'.format(url, attrs, title)
 
 	def add_pages(self, path='pages'):
 		path = os.path.join(self.root_path, path)
@@ -70,7 +88,7 @@ class BlogEngine:
 			for file in _listfiles(path)
 		])
 
-	def add_data(self, path='data'):
+	def add_data_files(self, path='data'):
 		path = os.path.join(self.root_path, path)
 		for file in os.listdir(path):
 			file_path = os.path.join(path, file)
@@ -79,6 +97,18 @@ class BlogEngine:
 			key = file.split('.')[0]
 			self.data[key] = _parse_data_file(file_path)
 			self.jinja.globals[key] = self.data[key]
+
+	def add_asset_hashes(self, path='dist/assets'):
+		if 'asset_hash' not in self.data:
+			self.data['asset_hash'] = {}
+		if 'asset_hash' not in self.jinja.globals:
+			self.jinja.globals['asset_hash'] = {}
+		for fullpath in _listfiles(os.path.join(self.root_path, path)):
+			relpath = fullpath.replace(self.root_path + '/' + path + '/', '')
+			md5sum = hashlib.md5(open(fullpath, 'rb').read()).hexdigest()
+			LOG.debug('MD5 of %s (%s): %s', fullpath, relpath, md5sum)
+			self.data['asset_hash'][relpath] = md5sum
+			self.jinja.globals['asset_hash'][relpath] = md5sum
 
 	def get_posts(self, num=None, tag=None, private=False):
 		posts = self.posts.copy()
