@@ -39,10 +39,11 @@ def _rss_item(post):
 
 
 class BlogEngine:
-	def __init__(self, root_path, site_title, root_url):
+	def __init__(self, root_path, root_url, site_title, site_desc=None):
 		self.root_path = root_path
-		self.site_title = site_title
 		self.root_url = root_url
+		self.site_title = site_title
+		self.site_desc = site_desc
 
 		self.cm = blog.content.ContentManager(root_url)
 		self.pages = self.cm.pages
@@ -58,6 +59,7 @@ class BlogEngine:
 			'a': self.get_link,
 			'asset_url': self.get_asset_url,
 			'root_url': self.root_url,
+			'site_description': self.site_desc,
 			'site_title': self.site_title,
 			'tags': self.tags,
 		})

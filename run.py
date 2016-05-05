@@ -19,7 +19,13 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--root-url', default='//www.lutro.me')
 args = parser.parse_args()
 
-blog = BlogEngine(ROOT_DIR, site_title='lutro.me', root_url=args.root_url)
+blog = BlogEngine(
+	ROOT_DIR,
+	root_url=args.root_url,
+	site_title='lutro.me',
+	site_desc=("Andreas Lutro's personal website/blog. "
+	           "Mostly programming and Linux sysadmin stuff.")
+)
 blog.jinja.filters['extract_domain'] = _extract_domain
 blog.add_pages()
 blog.add_posts()
