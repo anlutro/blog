@@ -8,7 +8,7 @@ import slugify
 LOG = logging.getLogger(__name__)
 
 
-def _generate_excerpt(body):
+def _get_excerpt(body):
 	excerpt_parts = []
 	# iterate through lines until we find an empty line/two newlines in a row
 	for line in body.splitlines():
@@ -16,6 +16,15 @@ def _generate_excerpt(body):
 			break
 		excerpt_parts.append(line)
 	return ' '.join(excerpt_parts)
+
+
+def _get_description(body, max_chars=100, search='. '):
+	stop_idx = body.rfind(search, 0, max_chars)
+	if stop_idx == -1 or stop_idx < max_chars:
+		stop_idx = body.find(search, max_chars)
+	if stop_idx == -1:
+		return body
+	return body[0:stop_idx+1]
 
 
 def _parse_pubdate(pubdate):
@@ -48,11 +57,12 @@ class Content:
 
 
 class Entry(Content):
-	def __init__(self, title, body, slug=None, subtitle=None):
+	def __init__(self, title, body, slug=None, subtitle=None, description=None):
 		self.title = title
 		self.body = body
 		self.slug = slug or slugify.slugify(title)
 		self.subtitle = subtitle
+		self.description = description
 
 	@property
 	def url(self):
@@ -65,6 +75,7 @@ class Entry(Content):
 
 		lines = contents.splitlines()
 		title = None
+		description = None
 
 		line = lines.pop(0)
 		while line != '':
@@ -72,6 +83,8 @@ class Entry(Content):
 				title = line[1:].strip()
 			elif line.startswith('title:'):
 				title = line[6:].strip()
+			elif line.startswith('description:'):
+				description = line[12:].strip()
 			elif line.startswith('subtitle:'):
 				kwargs['subtitle'] = line[9:].strip()
 			elif line.startswith('comments:'):
@@ -86,13 +99,14 @@ class Entry(Content):
 
 		# the only lines left should be the actual contents
 		body = '\n'.join(lines).strip()
+		excerpt = _get_excerpt(body)
+		if description is None:
+			description = _get_description(excerpt, 160)
 		if issubclass(cls, Post):
-			kwargs['excerpt'] = markdown.markdown(
-				_generate_excerpt(body)
-			)
+			kwargs['excerpt'] = markdown.markdown(excerpt)
 		body = markdown.markdown(body)
 
-		return cls(title=title, body=body, **kwargs)
+		return cls(title=title, body=body, description=description, **kwargs)
 
 	@classmethod
 	def process_meta(cls, line, kwargs):
@@ -124,16 +138,16 @@ class Entry(Content):
 
 
 class Page(Entry):
-	def __init__(self, title, body, slug=None, subtitle=None, allow_comments=False):
-		super().__init__(title, body, slug=slug, subtitle=subtitle)
+	def __init__(self, *args, allow_comments=False, **kwargs):
+		super().__init__(*args, **kwargs)
 		self.allow_comments = allow_comments
 
 
 class Post(Entry):
-	def __init__(self, title, body, slug=None, subtitle=None, pubdate=None,
-			excerpt=None, tags=None, public=True, allow_comments=True):
-		super().__init__(title, body, slug=slug, subtitle=subtitle)
-		self.excerpt = excerpt or _generate_excerpt(body)
+	def __init__(self, *args, pubdate=None, excerpt=None, tags=None,
+			public=True, allow_comments=True, **kwargs):
+		super().__init__(*args, **kwargs)
+		self.excerpt = excerpt or _get_excerpt(self.body)
 		self.pubdate = pubdate
 		self.tags = tags or []
 		self.public = public

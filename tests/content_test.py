@@ -25,7 +25,7 @@ def test_tag_parsing():
 	assert post.body == '<p>This is a test post.</p>'
 
 
-def test_generate_excerpt():
+def test_excerpt():
 	md = ('# Hello world!\n\n'
 		'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec\n'
 		'maximus diam ut ligula blandit semper. Proin id nulla libero.\n\n'

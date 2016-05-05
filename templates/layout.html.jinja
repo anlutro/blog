@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>{% block title %}{% endblock %} - {{ site_title }}</title>
-	<meta name="description" content="{{ site_description }}">
+	<meta name="description" content="{% block description %}{{ site_description }}{% endblock %}">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="alternate" type="application/rss+xml" href="{{ root_url }}/rss.xml" title="{{ site_title }} - RSS feed">
 	<link rel="stylesheet" href="{{ asset_url('style.css') }}">
