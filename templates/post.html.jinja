@@ -1,4 +1,7 @@
+{% from 'macros.jinja' import disqus_comments %}
+
 {% extends 'layout.html.jinja' %}
+
 {% block body_class %}single single-post{% endblock %}
 {% block title %}{{ post.title }}{% endblock %}
 {% block description %}{{ post.description }}{% endblock %}
@@ -27,21 +30,7 @@
 	</article>
 
 {% if post.allow_comments %}
-<div id="disqus_thread" class="comments"></div>
-<script type="text/javascript">
-var disqus_shortname = 'lutro';
-var disqus_identifier = "{{ post.slug }}";
-var disqus_title = "{{ post.title }}";
-
-(function() {
-	var dsq = document.createElement('script');
-	dsq.type = 'text/javascript';
-	dsq.async = true;
-	dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-	(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-})();
-</script>
-<noscript>Comments are powered by Disqus and require Javascript to be enabled.</noscript>
+	{{ disqus_comments(post) }}
 {% else %}
 <p class="comments_closed">Comments are closed for this post.</p>
 {% endif %}
