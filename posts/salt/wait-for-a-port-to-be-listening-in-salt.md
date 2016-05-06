@@ -41,3 +41,9 @@ from being executed until it completes. Then, our states that require the port
 to be listening simply add a requirement for the `cmd.run` state.
 
 In Salt 2016.3, you don't even need the `cmd:` in front of the requirement.
+
+Even if your service doesn't listen on a port, this approach can still be used.
+All you need is to find some sort of shell comand that either blocks or exits
+with 1 (or higher) if your service is down, but exits with 0 when your service
+is up and running and fully operational. Simply replace the `nc` command in the
+example above with your command.
