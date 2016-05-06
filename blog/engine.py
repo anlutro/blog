@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 import hashlib
 import logging
 import os
@@ -58,6 +58,7 @@ class BlogEngine:
 		self.jinja.globals.update({
 			'a': self.get_link,
 			'asset_url': self.get_asset_url,
+			'now': datetime.now(),
 			'root_url': self.root_url,
 			'site_description': self.site_desc,
 			'site_title': self.site_title,
@@ -147,7 +148,7 @@ class BlogEngine:
 			title=self.site_title,
 			description='',
 			link=self.root_url,
-			lastBuildDate=datetime.datetime.now(),
+			lastBuildDate=datetime.now(),
 			items=[_rss_item(post) for post in posts],
 		)
 
