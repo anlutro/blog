@@ -4,7 +4,7 @@
 {% for post in posts %}
 	<article class="post">
 		<header class="post-header">
-			<span class="post-pubdate">{{ post.pubdate.strftime('%B %d, %Y') }}</span>
+			<span class="post-pubdate">{{ post.pubdate.strftime('%B %-d, %Y') }}</span>
 			<h2 class="post-title">
 				<a href="{{ root_url }}/posts/{{ post.slug }}">{{ post.title }}</a>
 			{%- if post.subtitle %}
