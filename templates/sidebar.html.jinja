@@ -1,25 +1,3 @@
-{% macro links_block(links, title) %}
-{% if links %}
-<aside class="links">
-	<h3 class="links-title">{{ title }}</h2>
-	<ul>
-	{% for link in links[:5] %}
-		<li>
-			{{ a(link.title, link.url, blank=true) }}
-			<span class="link-site">{{ link.url | extract_domain }}</span>
-			<span class="link-date">{{ link.date }}</span>
-		</li>
-	{% endfor %}
-	</ul>
-{#
-	{% if links | length > 5 %}
-	<a href="{{ root_url }}/links/other" class="links-all">More</a>
-	{% endif %}
-#}
-</aside>
-{% endif %}	
-{% endmacro -%}
-
 <h1 class="site-title"><a href="{{ root_url }}">lutro.me</a></h1>
 <small class="site-subtitle">Andreas Lutro</small>
 
@@ -28,6 +6,7 @@
 		<li><a href="{{ root_url }}/about">About me</a></li>
 		<li>{{ a('GitHub', 'https://github.com/anlutro', blank=true) }}</li>
 		<li>{{ a('Twitter', 'https://twitter.com/AndreasLutro', blank=true) }}</li>
+		<li>{{ a('LinkedIn', 'https://www.linkedin.com/in/andreaslutro/', blank=true) }}</li>
 		<li><a href="{{ root_url }}/rss.xml">RSS feed</a></li>
 	</ul>
 </aside>
@@ -40,8 +19,3 @@
 	{%- endfor %}
 	</div>
 </aside>
-
-<h2>Current links</h2>
-{{ links_block(prog_links, 'Software and computers') }}
-{{ links_block(other_links, 'Politics and news') }}
-{{ links_block(music_links, 'Music') }}
