@@ -72,10 +72,10 @@ class BlogEngine:
 		return url
 
 	def get_link(self, title, url, blank=None):
-		attrs = ''
+		attrs = 'href="{}"'
 		if blank:
 			attrs += ' target="_blank" rel="noopener noreferrer"'
-		return '<a href="{}"{}>{}</a>'.format(url, attrs, title)
+		return '<a {}>{}</a>'.format(attrs, title)
 
 	def add_pages(self, path='pages'):
 		path = os.path.join(self.root_path, path)
