@@ -2,6 +2,7 @@ from datetime import datetime
 import logging
 import os.path
 
+import dateutil.parser
 import markdown
 import slugify
 
@@ -28,13 +29,7 @@ def _get_description(body, max_chars=100, search='. '):
 
 
 def _parse_pubdate(pubdate):
-	formats = ('%Y-%m-%d %H:%M:%S %z', '%Y-%m-%d %H:%M:%S', '%Y-%m-%d')
-	for dateformat in formats:
-		try:
-			return datetime.strptime(pubdate, dateformat)
-		except ValueError:
-			pass
-	raise ValueError('Could not datetime.strptime {}'.format(repr(pubdate)))
+	return dateutil.parser.parse(pubdate)
 
 
 def _str_to_bool(string):
