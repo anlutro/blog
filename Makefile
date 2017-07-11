@@ -1,4 +1,4 @@
-cmd = ./run.py
+cmd = .venv/bin/python ./run.py
 
 
 default: local css
