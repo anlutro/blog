@@ -1,6 +1,6 @@
 # Using a puppet-control repo in Vagrant
 pubdate: 2017-07-12T11:11:43+02:00
-tags: puppet
+tags: puppet, vagrant
 public: false
 
 Whether you use Puppet Enterprise or r10k, using a "control repo" with a branch
@@ -11,11 +11,12 @@ modules, or maybe assuming that puppet is installed on the host operating
 system. I wanted to write a bit about the things I discovered while
 experimenting trying to get a proper setup up and running.
 
+This is not meant as an introduction to puppet or vagrant - you might want to
+read up on how to use these tools before starting this article, as I won't go
+into detail on how puppet or vagrant configuration works..
+
 I'll assume you already have a puppet-control repository. If you don't, have a
 look at this [template repo](https://github.com/puppetlabs/control-repo).
-
-I'll also assume you have some basic knowledge about Vagrant - I won't go into
-detail on how to write your Vagrantfile.
 
 ## Modifications to the control repo
 
@@ -65,10 +66,17 @@ the Vagrantfile:
 
 ## Configuration files
 
-We do not need a lot of configuration to make this work. `puppet.conf` can
-literally be empty except from setting `environment=vagrant`. You might want to
-add various configuration to stay consistent with your production environment,
-of course.
+We do not need a lot of configuration to make this work. I'll refer to
+configuration file paths relative to the directory where your Vagrantfile is.
+
+`puppet/puppet.conf` only needs to contain "environment = vagrant". You might
+want to add various configuration to stay consistent with your production
+environment, of course.
+
+`puppet/hiera.yaml` does need to be present, but does not need any actual
+configuration. We need to put "version: 5" in there to prevent Puppet warnings.
+
+`r10k/r10k.yaml` should contain "cachedir: /var/cache/r10k".
 
 ## Provisioning
 
@@ -107,3 +115,6 @@ your puppetfile:
 Once this is done, we can try executing a class:
 
 	$ sudo /opt/puppetlabs/bin/puppet apply -e "include profile::base"
+
+At this point, you can start editing and testing your code changes in puppet-
+control.
