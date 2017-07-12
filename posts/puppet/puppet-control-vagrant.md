@@ -35,7 +35,7 @@ setting generic hiera data for vagrant machines, you can do it however you want.
 
 ## How we'll run Puppet
 
-By default, r10k creates one enviropetnment for every git branch. This is rather
+By default, r10k creates one environments for every git branch. This is rather
 nice for deploying things remotely, but for developing locally, this means we'd
 have to commit and run a deploy command before any change we make becomes
 "public" to the Vagrant machines. This is too slow for us, so we will be using
