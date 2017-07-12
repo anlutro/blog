@@ -1,7 +1,7 @@
 cmd = .venv/bin/python ./run.py
 
 
-default: local css
+default: local
 
 clean:
 	rm -rf dist/*
@@ -9,14 +9,10 @@ clean:
 assets:
 	rsync -r assets/ dist/assets
 
-css:
-	mkdir -p dist/assets
-	sassc sass/main.sass > dist/assets/style.css
-
-local: clean css assets
+local: clean assets
 	$(cmd) --root-url="file:///$$PWD/dist"
 
-remote: clean css assets
+remote: clean assets
 	$(cmd) --root-url="//www.lutro.me"
 
 upload: remote

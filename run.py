@@ -3,6 +3,7 @@
 import argparse
 import os.path
 import logging
+import sass
 from blog.engine import BlogEngine
 from blog.sitemap import generate_sitemap
 
@@ -57,3 +58,7 @@ blog.write_file('robots.txt', 'User-agent: *\nDisallow:\n')
 
 if not args.root_url.startswith('file://'):
 	blog.write_file('sitemap.xml', generate_sitemap(blog, https=True))
+
+blog.write_file('assets/style.css', sass.compile(
+	filename=os.path.join(ROOT_DIR, 'sass', 'main.sass')
+))
