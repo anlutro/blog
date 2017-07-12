@@ -30,6 +30,11 @@ blog = BlogEngine(
 blog.jinja.filters['extract_domain'] = _extract_domain
 blog.add_pages()
 blog.add_posts()
+
+blog.write_file('assets/style.css', sass.compile(
+	filename=os.path.join(ROOT_DIR, 'sass', 'main.sass')
+))
+
 blog.add_asset_hashes()
 
 blog.generate_page('index', template='home.html.jinja',
@@ -58,7 +63,3 @@ blog.write_file('robots.txt', 'User-agent: *\nDisallow:\n')
 
 if not args.root_url.startswith('file://'):
 	blog.write_file('sitemap.xml', generate_sitemap(blog, https=True))
-
-blog.write_file('assets/style.css', sass.compile(
-	filename=os.path.join(ROOT_DIR, 'sass', 'main.sass')
-))
