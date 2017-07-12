@@ -1,6 +1,6 @@
 # Using a puppet-control repo in Vagrant
 pubdate: 2017-07-12T11:11:43+02:00
-tags: puppet, vagrant
+tags: Puppet, Vagrant
 public: false
 
 Whether you use Puppet Enterprise or r10k, using a "control repo" with a branch
