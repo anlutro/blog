@@ -1,6 +1,7 @@
 # Using a puppet-control repo in Vagrant
-pubdate: 2017-07-11T20:49:19+02:00
+pubdate: 2017-07-12T11:11:43+02:00
 tags: puppet
+public: false
 
 Whether you use Puppet Enterprise or r10k, using a "control repo" with a branch
 for every environment is the way you want to set up Puppet these days. Finding a
@@ -9,6 +10,12 @@ difficult - most guides out there focus on a very simple puppet setup with no
 modules, or maybe assuming that puppet is installed on the host operating
 system. I wanted to write a bit about the things I discovered while
 experimenting trying to get a proper setup up and running.
+
+I'll assume you already have a puppet-control repository. If you don't, have a
+look at this [template repo](https://github.com/puppetlabs/control-repo).
+
+I'll also assume you have some basic knowledge about Vagrant - I won't go into
+detail on how to write your Vagrantfile.
 
 ## Modifications to the control repo
 
@@ -22,8 +29,8 @@ vagrant hostnames end with `.vagrant` it would look like this:
 Also make sure to add some sort of generic vagrant hiera file which applies to
 all vagrant machines. We set a `provider` custom fact which is set to "vagrant"
 for vagrant machines, and then load the hiera file
-`providers/%{facts.provider}.yaml`, but you can do it in a lot of different
-ways.
+`providers/%{facts.provider}.yaml`, but if you can think of another way of
+setting generic hiera data for vagrant machines, you can do it however you want.
 
 ## How we'll run Puppet
 
@@ -41,7 +48,7 @@ on the VM's filesystem, and we'll simply invoke puppet using `puppet apply`.
 
 ## Creating the Vagrant repo
 
-We'll create a new repo which contains the Vagrant configuration:
+We'll create a new git repo which contains the Vagrant configuration:
 
 - A Vagrantfile
 - Provisioning scripts
@@ -69,20 +76,31 @@ While Vagrant comes with a Puppet provisioner, it does not work that well with
 our workflow, so we just write a custom shell script that does the necessary
 things to get everything set up. Here's an example for CentOS/RHEL:
 
-	# shell script here
+	#!/bin/sh
+	rhv=$(cat /etc/redhat-release | grep -Po '\d' | head -1)
+	rpm -Uvh https://yum.puppetlabs.com/puppetlabs-release-pc1-el-${rhv}.noarch.rpm
+	yum -y install puppet-agent
+	/opt/puppetlabs/puppet/bin/gem install r10k
 
 Add it to our Vagrantfile:
 
-	# vagrantfile here
+	config.vm.provision 'install_puppet', type: 'shell', path: 'install_puppet.sh'
+
+Let's make sure it works by running this command:
+
+	$ vagrant up && vagrant ssh
 
 ## Our first puppet run
 
-We're almost ready to run puppet - only one thing is missing: Installing modules and their dependencies. We'll do this manually with r10k:
+We're almost ready to run puppet - only one thing is missing: Installing modules
+and their dependencies. We'll do this manually with r10k, inside the virtual
+machine:
 
 	$ cd /etc/puppetlabs/code/environments/vagrant
 	$ sudo /opt/puppetlabs/puppet/bin/r10k puppetfile install
 
-You may also want to check for missing dependencies:
+You may also want to check for missing dependencies which need to be added to
+your puppetfile:
 
 	$ sudo /opt/puppetlabs/bin/puppet module list --tree
 
