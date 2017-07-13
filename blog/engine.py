@@ -72,7 +72,7 @@ class BlogEngine:
 		return url
 
 	def get_link(self, title, url, blank=None):
-		attrs = 'href="{}"'
+		attrs = 'href="{}"'.format(url)
 		if blank:
 			attrs += ' target="_blank" rel="noopener noreferrer"'
 		return '<a {}>{}</a>'.format(attrs, title)
