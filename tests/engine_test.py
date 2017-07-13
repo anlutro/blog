@@ -1,8 +1,5 @@
 import os.path
-import shutil
-import random
 import pytest
-
 from blog.engine import BlogEngine
 
 
