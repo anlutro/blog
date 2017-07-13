@@ -12,5 +12,7 @@ def engine():
 	return BlogEngine(root_path, 'test', '//localhost')
 
 
-def test_add_posts(engine):
-	engine.add_posts()
+def test_get_link(engine):
+	assert '<a href="/test">Test</a>' == engine.get_link('Test', '/test')
+	assert '<a href="http://test">Test</a>' == engine.get_link('Test', 'http://test')
+	assert '<a href="http://test" target="_blank" rel="noopener noreferrer">Test</a>' == engine.get_link('Test', 'http://test', blank=True)
