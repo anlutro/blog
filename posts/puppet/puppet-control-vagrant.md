@@ -17,7 +17,7 @@ into detail on how puppet or vagrant configuration works..
 I'll assume you already have a puppet-control repository. If you don't, have a
 look at this [template repo](https://github.com/puppetlabs/control-repo).
 
-## Modifications to the control repo
+### Modifications to the control repo
 
 First of all, you probably want to add .gitignore rules in your control repo for
 node-specific hieradata for vagrant files, so that you can modify these files as
@@ -32,7 +32,7 @@ for vagrant machines, and then load the hiera file
 `providers/%{facts.provider}.yaml`, but if you can think of another way of
 setting generic hiera data for vagrant machines, you can do it however you want.
 
-## How we'll run Puppet
+### How we'll run Puppet
 
 By default, r10k creates one environments for every git branch. This is rather
 nice for deploying things remotely, but for developing locally, this means we'd
@@ -46,7 +46,7 @@ We'll create a "fake" environment called "vagrant", which all of our VMs will
 use (configured through puppet.conf). This environment will be a plain directory
 on the VM's filesystem, and we'll simply invoke puppet using `puppet apply`.
 
-## Creating the Vagrant repo
+### Creating the Vagrant repo
 
 We'll create a new git repo which contains the Vagrant configuration:
 
@@ -63,7 +63,7 @@ the Vagrantfile:
 	config.vm.share './puppet', '/etc/puppetlabs/puppet'
 	config.vm.share './r10k', '/etc/puppetlabs/r10k'
 
-## Configuration files
+### Configuration files
 
 We do not need a lot of configuration to make this work. I'll refer to
 configuration file paths relative to the directory where your Vagrantfile is.
@@ -77,7 +77,7 @@ configuration. We need to put "version: 5" in there to prevent Puppet warnings.
 
 `r10k/r10k.yaml` should contain "cachedir: /var/cache/r10k".
 
-## Provisioning
+### Provisioning
 
 While Vagrant comes with a Puppet provisioner, it does not work that well with
 our workflow, so we just write a custom shell script that does the necessary
@@ -97,7 +97,7 @@ Let's make sure it works by running this command:
 
 	$ vagrant up && vagrant ssh
 
-## Our first puppet run
+### Our first puppet run
 
 We're almost ready to run puppet - only one thing is missing: Installing modules
 and their dependencies. We'll do this manually with r10k, inside the virtual
