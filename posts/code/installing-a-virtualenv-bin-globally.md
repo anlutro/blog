@@ -1,6 +1,6 @@
 # Installing a virtualenv bin globally
 pubdate: 2015-10-10 09:54:43 +0100
-tags: Python, Virtualenv
+tags: Python
 
 TLDR: Symlink `/path/to/virtualenv/bin/my-script` to `~/bin/my-script`
 
@@ -28,3 +28,5 @@ This means that we can simply symlink the script to `~/bin` or `/usr/local/bin` 
 	/home/andreas/bin/salt
 	$ salt --version
 	salt 2015.8.0-154-g4a69db2 (Beryllium)
+
+I'd also like to mention [pipsi](https://github.com/mitsuhiko/pipsi), which is a tool that more or less automates this. It's more suitable for installing things where you don't want to do any local development, though.
