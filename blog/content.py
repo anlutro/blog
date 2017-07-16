@@ -146,9 +146,10 @@ class Entry(Content):
 
 
 class Page(Entry):
-	def __init__(self, *args, allow_comments=False, **kwargs):
+	def __init__(self, *args, allow_comments=False, dir=None, **kwargs):
 		super().__init__(*args, **kwargs)
 		self.allow_comments = allow_comments
+		self.dir = dir
 
 
 class Post(Entry):

@@ -78,11 +78,15 @@ class BlogEngine:
 		return '<a {}>{}</a>'.format(attrs, title)
 
 	def add_pages(self, path='pages'):
-		path = os.path.join(self.root_path, path)
-		self.cm.add_pages([
-			self.cm.Page.from_file(file)
-			for file in _listfiles(path)
-		])
+		pages_path = os.path.join(self.root_path, path)
+		pages = []
+		for file in _listfiles(pages_path):
+			page_dir = os.path.relpath(os.path.dirname(file), pages_path)
+			if page_dir == '.':
+				page_dir = None
+			kwargs = {'dir': page_dir}
+			pages.append(self.cm.Page.from_file(file, kwargs=kwargs))
+		self.cm.add_pages(pages)
 
 	def add_posts(self, path='posts'):
 		path = os.path.join(self.root_path, path)
@@ -123,9 +127,11 @@ class BlogEngine:
 			return posts[:num]
 		return posts
 
-	def _get_dist_path(self, path):
+	def _get_dist_path(self, path, dir=None):
 		if isinstance(path, str):
 			path = [path]
+		if dir:
+			path.insert(0, dir)
 		return os.path.join(self.root_path, 'dist', *path)
 
 	def _get_template(self, template):
@@ -133,15 +139,16 @@ class BlogEngine:
 			template = self.jinja.get_template(template)
 		return template
 
-	def generate_page(self, path, template, **kwargs):
-		path = self._get_dist_path(path)
+	def generate_page(self, path, template, page=None, **kwargs):
+		page_dir = page.dir if page else None
+		path = self._get_dist_path(path, dir=page_dir)
 		if not path.endswith('.html'):
 			path = path + '.html'
 		if not os.path.isdir(os.path.dirname(path)):
 			os.makedirs(os.path.dirname(path))
 		template = self._get_template(template)
 		with open(path, 'w+') as file:
-			file.write(template.render(**kwargs))
+			file.write(template.render(page=page, **kwargs))
 
 	def generate_rss(self, path, posts):
 		rss = PyRSS2Gen.RSS2(
