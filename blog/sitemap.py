@@ -20,7 +20,8 @@ class SitemapGenerator:
 		tree = etree.Element('urlset', xmlns='http://www.sitemaps.org/schemas/sitemap/0.9')
 		tree.append(self.get_index_element(self.blog.root_url))
 		for page in self.blog.pages:
-			tree.append(self.get_page_element(page))
+			if page.public:
+				tree.append(self.get_page_element(page))
 		for tag in self.blog.tags:
 			tree.append(self.get_tag_element(tag))
 		for post in self.blog.get_posts():

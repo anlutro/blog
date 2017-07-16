@@ -52,12 +52,13 @@ class Content:
 
 
 class Entry(Content):
-	def __init__(self, title, body, slug=None, subtitle=None, description=None):
+	def __init__(self, title, body, slug=None, subtitle=None, description=None, public=True):
 		self.title = title
 		self.body = body
 		self.slug = slug or slugify.slugify(title)
 		self.subtitle = subtitle
 		self.description = description
+		self.public = public
 
 	@property
 	def url(self):
@@ -108,6 +109,18 @@ class Entry(Content):
 		if line.startswith('slug:'):
 			kwargs['slug'] = line[5:].strip()
 
+		elif line.startswith('public:'):
+			try:
+				kwargs['public'] = _str_to_bool(line[7:])
+			except ValueError:
+				LOG.warning('invalid boolean value for public', exc_info=True)
+
+		elif line.startswith('private:'):
+			try:
+				kwargs['private'] = not _str_to_bool(line[7:])
+			except ValueError:
+				LOG.warning('invalid boolean value for private', exc_info=True)
+
 	@classmethod
 	def from_file(cls, path, kwargs=None):
 		if kwargs is None:
@@ -139,13 +152,11 @@ class Page(Entry):
 
 
 class Post(Entry):
-	def __init__(self, *args, pubdate=None, excerpt=None, tags=None,
-			public=True, allow_comments=True, **kwargs):
+	def __init__(self, *args, pubdate=None, excerpt=None, tags=None, allow_comments=True, **kwargs):
 		super().__init__(*args, **kwargs)
 		self.excerpt = excerpt or _get_excerpt(self.body)
 		self.pubdate = pubdate
 		self.tags = tags or []
-		self.public = public
 		self.allow_comments = allow_comments
 
 	@classmethod
@@ -170,18 +181,6 @@ class Post(Entry):
 		elif line.startswith('tags:'):
 			line_tags = line[5:].strip().split(',')
 			kwargs['tags'] = [cls.make_tag(tag) for tag in line_tags]
-
-		elif line.startswith('public:'):
-			try:
-				kwargs['public'] = _str_to_bool(line[7:])
-			except ValueError:
-				LOG.warning('invalid boolean value for public', exc_info=True)
-
-		elif line.startswith('private:'):
-			try:
-				kwargs['private'] = not _str_to_bool(line[7:])
-			except ValueError:
-				LOG.warning('invalid boolean value for private', exc_info=True)
 
 	@property
 	def url(self):
