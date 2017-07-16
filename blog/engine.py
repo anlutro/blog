@@ -9,6 +9,7 @@ import PyRSS2Gen
 import yaml
 
 import blog.content
+import blog.sitemap
 
 LOG = logging.getLogger(__name__)
 
@@ -139,6 +140,21 @@ class BlogEngine:
 			template = self.jinja.get_template(template)
 		return template
 
+	def generate_pages(self):
+		for page in self.pages:
+			self.generate_page(page.slug, template='page.html.jinja', page=page)
+
+	def generate_posts(self):
+		for post in self.posts:
+			self.generate_page(['posts', post.slug],
+				template='post.html.jinja', post=post)
+
+	def generate_tags(self):
+		for tag in self.tags:
+			posts = self.get_posts(tag=tag, private=True)
+			self.generate_page(['tags', tag.slug],
+				template='archive.html.jinja', posts=posts)
+
 	def generate_page(self, path, template, page=None, **kwargs):
 		page_dir = page.dir if page else None
 		path = self._get_dist_path(path, dir=page_dir)
@@ -149,6 +165,13 @@ class BlogEngine:
 		template = self._get_template(template)
 		with open(path, 'w+') as file:
 			file.write(template.render(page=page, **kwargs))
+
+	def generate_index(self, num_posts=5):
+		posts = self.get_posts(num=num_posts)
+		self.generate_page('index', template='home.html.jinja', posts=posts)
+
+	def generate_archive(self):
+		self.generate_page('archive', template='archive.html.jinja', posts=self.get_posts())
 
 	def generate_rss(self, path, posts):
 		rss = PyRSS2Gen.RSS2(
@@ -162,6 +185,10 @@ class BlogEngine:
 		path = self._get_dist_path(path)
 		with open(path, 'w+') as file:
 			rss.write_xml(file)
+
+	def generate_sitemap(self, https=False):
+		sitemap = blog.sitemap.generate_sitemap(self, https=https)
+		self.write_file('sitemap.xml', sitemap)
 
 	def write_file(self, path, contents):
 		path = self._get_dist_path(path)
