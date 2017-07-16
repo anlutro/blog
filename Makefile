@@ -1,4 +1,6 @@
 cmd = .venv/bin/python ./run.py
+rsync_dest = lutro.me:/var/www/lutro.me
+rsync_args = -rvc -e ssh ./dist/ --delete-after --filter='P assets/*'
 
 
 default: local
@@ -16,7 +18,9 @@ remote: clean assets
 	$(cmd) --root-url="//www.lutro.me"
 
 upload: remote
-	rsync -rvc -e ssh ./dist/ lutro.me:/var/www/lutro.me \
-		--delete-after --filter='P assets/*'
+	rsync $(rsync_args) $(rsync_dest)
+
+upload-dryrun: remote
+	rsync --dry-run $(rsync_args) $(rsync_dest)
 
 .PHONY: assets
