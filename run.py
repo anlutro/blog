@@ -4,7 +4,7 @@ import argparse
 import os.path
 import logging
 import sass
-from blog.engine import BlogEngine
+from russell.engine import BlogEngine
 
 ROOT_DIR = os.path.dirname(__file__)
 
@@ -46,5 +46,5 @@ blog.generate_page('links', template='links.html.jinja')
 
 blog.generate_sitemap(https=True)
 
-blog.generate_rss('rss.xml', posts=blog.get_posts())
+blog.generate_rss('rss.xml')
 blog.write_file('robots.txt', 'User-agent: *\nDisallow:\n')
