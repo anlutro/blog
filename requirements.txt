@@ -1,2 +1,2 @@
--e git+https://github.com/anlutro/russell@39aa3771e2143ef6ba85c489267742b7183935fa#egg=russell
+-e git+https://github.com/anlutro/russell@fc23ba0#egg=russell
 libsass>=0.13,<0.14
