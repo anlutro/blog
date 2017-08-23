@@ -1,5 +1,6 @@
 # Different SSH keys per github organisation
 pubdate: 2017-08-23T19:13:44+02:00
+tags: linux, git
 
 If you're like me, you prefer seting up different SSH keys for personal and private use. Maybe you even work for multiple organisations at the same time and don't want to risk 1 compromised private key to have a wide-spread effect.
 
