@@ -1,4 +1,5 @@
-cmd = .venv/bin/python ./run.py
+run_cmd = .venv/bin/python ./run.py
+serve_cmd = .venv/bin/python ./serve.py
 rsync_dest = lutro.me:/var/www/lutro.me
 rsync_args = -rvc -e ssh ./dist/ --delete-after --filter='P assets/*'
 
@@ -12,10 +13,13 @@ assets:
 	rsync -r assets/ dist/assets
 
 local: clean assets
-	$(cmd) --root-url="file:///$$PWD/dist"
+	$(run_cmd) --root-url="//localhost:8000"
+
+serve:
+	$(serve_cmd)
 
 remote: clean assets
-	$(cmd) --root-url="//www.lutro.me"
+	$(run_cmd) --root-url="//www.lutro.me"
 
 upload: remote
 	rsync $(rsync_args) $(rsync_dest)
