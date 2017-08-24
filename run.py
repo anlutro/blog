@@ -30,10 +30,10 @@ blog.jinja.filters['extract_domain'] = _extract_domain
 blog.add_pages()
 blog.add_posts()
 
+blog.copy_assets()
 blog.write_file('assets/style.css', sass.compile(
 	filename=os.path.join(ROOT_DIR, 'sass', 'main.sass')
 ))
-
 blog.add_asset_hashes()
 
 blog.generate_index(num_posts=3)
