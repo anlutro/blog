@@ -8,7 +8,10 @@ from russell.engine import BlogEngine
 
 ROOT_DIR = os.path.dirname(__file__)
 
-logging.basicConfig()
+logging.basicConfig(
+	level=logging.INFO,
+	format='%(asctime)s [%(levelname)8s] [%(name)s] %(message)s',
+)
 
 def _extract_domain(value):
 	value = value.split('//', 1)[1]
