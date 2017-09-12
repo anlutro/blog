@@ -2,7 +2,8 @@
 
 import os
 import os.path
-from http.server import test, SimpleHTTPRequestHandler
+from http.server import HTTPServer, SimpleHTTPRequestHandler
+
 
 class RequestHandler(SimpleHTTPRequestHandler):
 	def translate_path(self, path):
@@ -13,5 +14,21 @@ class RequestHandler(SimpleHTTPRequestHandler):
 				return try_path
 		return path
 
-os.chdir(os.path.join(os.path.dirname(__file__), 'dist'))
-test(HandlerClass=RequestHandler)
+
+def run_server(root_dir=None):
+	if root_dir:
+		os.chdir(root_dir)
+
+	server_address = ('127.0.0.1', 8000)
+
+	httpd = HTTPServer(server_address, RequestHandler)
+	sa = httpd.socket.getsockname()
+	print('Serving HTTP on http://%s:%s/ ...' % sa)
+	try:
+		httpd.serve_forever()
+	except KeyboardInterrupt:
+		pass
+	finally:
+		httpd.server_close()
+
+run_server(os.path.join(os.path.dirname(__file__), 'dist'))
