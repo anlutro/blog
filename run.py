@@ -13,11 +13,6 @@ logging.basicConfig(
 	format='%(asctime)s [%(levelname)8s] [%(name)s] %(message)s',
 )
 
-def _extract_domain(value):
-	value = value.split('//', 1)[1]
-	value = value.split('/', 1)[0]
-	return value.replace('www.', '')
-
 parser = argparse.ArgumentParser()
 parser.add_argument('--root-url', default='//www.lutro.me')
 args = parser.parse_args()
@@ -29,7 +24,6 @@ blog = BlogEngine(
 	site_desc=("Andreas Lutro's personal website/blog. "
 	           "Mostly programming and Linux sysadmin stuff.")
 )
-blog.jinja.filters['extract_domain'] = _extract_domain
 blog.add_pages()
 blog.add_posts()
 
