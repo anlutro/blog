@@ -2,7 +2,7 @@
 pubdate: 2017-09-12 18:58 CEST
 tags: Python
 
-3 years ago I wrote about [/posts/russell](Russell), a static site/blog generator I wrote. Since then, I've had a major rewrite of the project to make it easier to extend and configure.
+3 years ago I wrote about [Russell](/posts/russell), a static site/blog generator I wrote. Since then, I've had a major rewrite of the project to make it easier to extend and configure.
 
 My sentiments towards other static site generators and CMSes are still the same, though at least by now the most popular ones aren't all written in Ruby.
 
