@@ -33,7 +33,7 @@ blog.write_file('assets/style.css', sass.compile(
 ))
 blog.add_asset_hashes()
 
-blog.generate_index(num_posts=3)
+blog.generate_index(num_posts=4)
 blog.generate_archive()
 blog.generate_pages()
 blog.generate_posts()
