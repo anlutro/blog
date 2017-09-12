@@ -39,7 +39,7 @@ blog.generate_pages()
 blog.generate_posts()
 blog.generate_tags()
 
-blog.generate_page('links', template='links.html.jinja')
+# blog.generate_page('links', template='links.html.jinja')
 
 blog.generate_sitemap(https=True)
 
