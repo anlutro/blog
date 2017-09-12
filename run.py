@@ -43,5 +43,5 @@ blog.generate_tags()
 
 blog.generate_sitemap(https=True)
 
-blog.generate_rss('rss.xml')
+blog.generate_rss(only_excerpt=False)
 blog.write_file('robots.txt', 'User-agent: *\nDisallow:\n')
