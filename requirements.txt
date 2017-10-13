@@ -1,2 +1,2 @@
-russell==0.5.2
+russell==0.5.7
 libsass>=0.13,<0.14
