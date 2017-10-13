@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import argparse
+import os
 import os.path
 import logging
 import sass
@@ -12,6 +13,33 @@ logging.basicConfig(
 	level=logging.INFO,
 	format='%(asctime)s [%(levelname)8s] [%(name)s] %(message)s',
 )
+
+def validate_sass_file(sass_file):
+	uses_tabs = None
+	with open(sass_file) as file:
+		line_no = 0
+		for line in file:
+			line_no += 1
+			if uses_tabs is None:
+				if line.startswith('  '):
+					uses_tabs = False
+				elif line.startswith('\t'):
+					uses_tabs = True
+			elif uses_tabs is True and '  ' in line:
+				print('%s uses tabs but spaces found on line #%d' % (sass_file, line_no))
+			elif uses_tabs is False and '\t' in line:
+				print('%s uses spaces but tab found on line #%d' % (sass_file, line_no))
+
+def generate_css():
+	sass_dir = os.path.join(ROOT_DIR, 'sass')
+	sass_files = [
+		f.path for f in os.scandir(sass_dir)
+		if f.path.endswith('.sass')
+	]
+	for sass_file in sass_files:
+		validate_sass_file(sass_file)
+	sass_main = os.path.join(sass_dir, 'main.sass')
+	return sass.compile(filename=sass_main)
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--root-url', default='//www.lutro.me')
@@ -28,9 +56,7 @@ blog.add_pages()
 blog.add_posts()
 
 blog.copy_assets()
-blog.write_file('assets/style.css', sass.compile(
-	filename=os.path.join(ROOT_DIR, 'sass', 'main.sass')
-))
+blog.write_file('assets/style.css', generate_css())
 blog.add_asset_hashes()
 
 blog.generate_index(num_posts=4)
