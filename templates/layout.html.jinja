@@ -17,7 +17,33 @@
 	{% block content %}{% endblock %}
 	</main>
 	<section class="sidebar">
-	{% include 'sidebar.html.jinja' %}
+		<h1 class="site-title"><a href="{{ root_url }}">lutro.me</a></h1>
+		<small class="site-subtitle">Andreas Lutro</small>
+
+		<aside class="menu">
+			<ul>
+				<li><a href="{{ root_url }}/about">About me</a></li>
+				<li>{{ a('GitHub', 'https://github.com/anlutro', blank=true) }}</li>
+				<li>{{ a('Twitter', 'https://twitter.com/AndreasLutro', blank=true) }}</li>
+				<li>{{ a('LinkedIn', 'https://www.linkedin.com/in/andreaslutro/', blank=true) }}</li>
+				<li><a href="{{ root_url }}/rss.xml">RSS feed</a></li>
+			</ul>
+		</aside>
+
+		<aside class="tag_cloud">
+			<h2>Tags</h2>
+			<div class="tags">
+			{%- for tag in tags | sort(attribute='slug') %}
+				<a href="{{ tag.url }}" class="tag">{{ tag.title }}</a>
+			{%- endfor %}
+			</div>
+		</aside>
+
+		<aside class="referrals">
+			<p>
+				Like what you read? Need a VPS? Use this <a href="https://www.linode.com/?r=65fbbe55932fe209997d1ab388e4781bdb6243ba">Linode referral link</a>!
+			</p>
+		</aside>
 	</section>
 
 	<footer class="footer">
