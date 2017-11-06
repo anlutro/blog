@@ -115,5 +115,5 @@ Once this is done, we can try executing a class:
 
 	$ sudo /opt/puppetlabs/bin/puppet apply -e "include profile::base"
 
-At this point, you can start editing and testing your code changes in puppet-
-control.
+At this point, you can start editing and testing your code changes in
+puppet-control.
