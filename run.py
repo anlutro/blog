@@ -9,11 +9,6 @@ from russell.engine import BlogEngine
 
 ROOT_DIR = os.path.dirname(__file__)
 
-logging.basicConfig(
-	level=logging.INFO,
-	format='%(asctime)s [%(levelname)8s] [%(name)s] %(message)s',
-)
-
 def validate_sass_file(sass_file):
 	uses_tabs = None
 	with open(sass_file) as file:
@@ -43,7 +38,13 @@ def generate_css():
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--root-url', default='//www.lutro.me')
+parser.add_argument('-v', '--verbose', action='store_true')
 args = parser.parse_args()
+
+logging.basicConfig(
+	level=logging.DEBUG if args.verbose else logging.INFO,
+	format='%(asctime)s [%(levelname)8s] [%(name)s] %(message)s',
+)
 
 blog = BlogEngine(
 	ROOT_DIR,
