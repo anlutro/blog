@@ -1,12 +1,12 @@
 # My favorite music
 
-In alphabetical order.
+In alphabetical order, because trying to rank music is way too hard.
 
-* Anthrax - Sound of White Noise
-* Black Sabbath - Sabbath Bloody Sabbath
-* Cannibal Corpse - Tomb of the Mutilated
+* Atheist - Elements
 * Carpenter Brut - Trilogy
+* Concord Dawn - Air Chrysalis
 * Cryptopsy - None So Vile
+* Daft Punk - Discovery
 * Death - Human (2011 re-release is great)
 * Dream Theater - Images and Words
 * Earthside - A Dream in Static
@@ -14,15 +14,16 @@ In alphabetical order.
 * Gojira - From Mars to Sirius
 * In Flames - Whoracle
 * Isis - Panopticon
-* Megadeth - Peace Sells... But Who's Buying?
 * Meshuggah - Catch 33
 * Metallica - Master of Puppets
 * Napalm Death - Diatribes
-* Opeth - Still Life
 * Opeth - Blackwater Park
+* Opeth - Still Life
 * Pantera - Vulgar Display of Power
+* Pendulum - Hold Your Color
 * Pink Floyd - Dark Side of the Moon
 * Racer X - Street Lethal
+* Skyharbor - Guiding Lights
 * Strapping Young Lad - Alien
 * Tool - Lateralus
 * Voivod - Nothingface
