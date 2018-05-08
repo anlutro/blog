@@ -9,9 +9,7 @@ The most common solution is to have a `requirements` directory with `base.txt`, 
 
 There are some existing third-party tools out there written to help with this problem.
 
-[pipenv](https://github.com/kennethreitz/pipenv)/[pipfile](https://github.com/pypa/pipfile) uses a completely new file format for storing dependencies, inspired by other language's more modern dependency managers. In the future this may be part of pip core, but it is not currently.
-
-Other tools work on top of the existing pip setup, keeping things more familiar.
+[pipenv](https://github.com/kennethreitz/pipenv)/[pipfile](https://github.com/pypa/pipfile) uses a completely new file format for storing dependencies, inspired by other language's more modern dependency managers. In the future this may be part of pip core, but it is not currently. Until then I'm staying far away from the project, as trying to implement it in a real-world project revealed all sorts of bugs. The codebase itself looks super sketchy, as it's downloaded upstream libraries like pip, but then applied patches on top of them.
 
 [pipwrap](https://github.com/jessamynsmith/pipwrap) scans your virtualenv for packages, compares them to what's in your requirements files, and interactively asks you where it should place packages that are in your environment, but not in any requirements file.
 
