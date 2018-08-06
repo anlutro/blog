@@ -27,7 +27,7 @@ Here's an example Dockerfile using the official Python Docker images, which are 
 
 
 	# the second, production stage can be much more lightweight:
-	FROM python:3.7-stretch-slim AS production
+	FROM python:3.7-slim-stretch AS production
 	COPY --from=build /venv /venv
 
 	# install runtime libraries (different from development libraries!)
