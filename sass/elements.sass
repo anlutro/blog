@@ -115,15 +115,24 @@ th, td
 code
 	white-space: pre
 	font-size: .95em
+	background: #f9f9f9
+	border: 1px solid rgba(160, 160, 160, 0.2)
+	padding: .2em .4em
+	margin: 0 .1em
 
 // code blocks
 pre
-	background: #f9f9f9
-	border: 1px solid rgba(160, 160, 160, 0.2)
 	line-height: 1.3
 	overflow-x: auto
 	margin: 1.5em 0
 	padding: .5em 1em
+	background: #f9f9f9
+	border: 1px solid rgba(160, 160, 160, 0.2)
 
 	code
 		font-size: .75em
+		// override inline code styles
+		background: none
+		border: none
+		padding: 0
+		margin: 0
