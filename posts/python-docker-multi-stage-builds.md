@@ -52,3 +52,5 @@ You should put this stage *in the middle* of the two other stages of the Dockerf
 
 	$ docker build --target=development --tag=myproject-dev .
 	$ docker run --rm -it myproject-dev
+
+If you want a functional example to play around with, I've made a git repository following these steps, which you can clone and play around with: https://github.com/anlutro/python-docker-multistage-example
