@@ -23,7 +23,7 @@ Here's an example Dockerfile using the official Python Docker images, which are 
 	# install the project, basically copying its code, into the virtualenv.
 	# this assumes the project has a functional setup.py
 	ADD . /project
-	RUN /venv/bin/pip install .
+	RUN /venv/bin/pip install /project
 
 
 	# the second, production stage can be much more lightweight:
