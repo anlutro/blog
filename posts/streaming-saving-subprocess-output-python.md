@@ -1,5 +1,6 @@
 # Streaming and saving subprocess output at the same time in Python
 pubdate: 2018-04-13 21:18 CEST
+tags: Python
 
 Sometimes, you want to run a subprocess with Python and stream/print its output
 live to the calling process' terminal, and at the same time save the output to a
