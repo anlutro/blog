@@ -59,9 +59,11 @@ The control repo can exist inside of this vagrant repo (make sure to .gitignore
 it!) or outside. The important thing here is to share the correct directories in
 the Vagrantfile:
 
-	config.vm.share './control', '/etc/puppetlabs/code/environments/vagrant'
-	config.vm.share './puppet', '/etc/puppetlabs/puppet'
-	config.vm.share './r10k', '/etc/puppetlabs/r10k'
+```ruby
+config.vm.share './control', '/etc/puppetlabs/code/environments/vagrant'
+config.vm.share './puppet', '/etc/puppetlabs/puppet'
+config.vm.share './r10k', '/etc/puppetlabs/r10k'
+```
 
 ### Configuration files
 
@@ -83,19 +85,25 @@ While Vagrant comes with a Puppet provisioner, it does not work that well with
 our workflow, so we just write a custom shell script that does the necessary
 things to get everything set up. Here's an example for CentOS/RHEL:
 
-	#!/bin/sh
-	rhv=$(cat /etc/redhat-release | grep -Po '\d' | head -1)
-	rpm -Uvh https://yum.puppetlabs.com/puppetlabs-release-pc1-el-${rhv}.noarch.rpm
-	yum -y install puppet-agent
-	/opt/puppetlabs/puppet/bin/gem install r10k
+```bash
+#!/bin/sh
+rhv=$(cat /etc/redhat-release | grep -Po '\d' | head -1)
+rpm -Uvh https://yum.puppetlabs.com/puppetlabs-release-pc1-el-${rhv}.noarch.rpm
+yum -y install puppet-agent
+/opt/puppetlabs/puppet/bin/gem install r10k
+```
 
 Add it to our Vagrantfile:
 
-	config.vm.provision 'install_puppet', type: 'shell', path: 'install_puppet.sh'
+```ruby
+config.vm.provision 'install_puppet', type: 'shell', path: 'install_puppet.sh'
+```
 
 Let's make sure it works by running this command:
 
-	$ vagrant up && vagrant ssh
+```bash
+$ vagrant up && vagrant ssh
+```
 
 ### Our first puppet run
 
@@ -103,17 +111,23 @@ We're almost ready to run puppet - only one thing is missing: Installing modules
 and their dependencies. We'll do this manually with r10k, inside the virtual
 machine:
 
-	$ cd /etc/puppetlabs/code/environments/vagrant
-	$ sudo /opt/puppetlabs/puppet/bin/r10k puppetfile install
+```bash
+$ cd /etc/puppetlabs/code/environments/vagrant
+$ sudo /opt/puppetlabs/puppet/bin/r10k puppetfile install
+```
 
 You may also want to check for missing dependencies which need to be added to
 your puppetfile:
 
-	$ sudo /opt/puppetlabs/bin/puppet module list --tree
+```bash
+$ sudo /opt/puppetlabs/bin/puppet module list --tree
+```
 
 Once this is done, we can try executing a class:
 
-	$ sudo /opt/puppetlabs/bin/puppet apply -e "include profile::base"
+```bash
+$ sudo /opt/puppetlabs/bin/puppet apply -e "include profile::base"
+```
 
 At this point, you can start editing and testing your code changes in
 puppet-control.
