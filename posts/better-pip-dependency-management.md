@@ -24,25 +24,33 @@ First of all, we want to make sure we never forget to add `--constraints constra
 
 With that out of the way, let's look at some example workflows. Upgrade an existing package:
 
-	pip install 'django >= 2'
-	# no need to edit requirements/base.txt, "django" is already there
-	pip freeze > requirements/constraints.txt
+```bash
+pip install 'django >= 2'
+# no need to edit requirements/base.txt, "django" is already there
+pip freeze > requirements/constraints.txt
+```
 
 Install a new package in dev:
 
-	echo 'pytest-cov' >> requirements/dev.txt
-	pip install -r requirements/dev.txt
-	pip freeze > requirements/constraints.txt
+```bash
+echo 'pytest-cov' >> requirements/dev.txt
+pip install -r requirements/dev.txt
+pip freeze > requirements/constraints.txt
+```
 
 Install requirements in a fresh production or development environment works just like before:
 
-	pip install -r requirements/base.txt
-	pip install -r requirements/dev.txt
+```bash
+pip install -r requirements/base.txt
+pip install -r requirements/dev.txt
+```
 
 This isn't perfect. If you don't install *every* requirement file in development, your constraints file will be missing those files' requirements. A code review would catch accidentally removing a constraint, but how do you detect a package that is entirely missing from the constraints file? `pip install` doesn't even have a dry-run mode. Still, constraint files (or any of the third-party tools, really) are nice ways of improving and simplifying dependency managment with `pip`.
 
 There's also a shell command you can use as a commit hook or part of your test/CI suite to check that you're not missing anything in your constraints.txt:
 
-	! pip freeze | grep -vxiF -f requirements/constraints.txt -
+```bash
+! pip freeze | grep -vxiF -f requirements/constraints.txt -
+```
 
 This will output all pip packages that are installed but not present in your constraints file. We use the `!` to make sure that the command gives a non-zero exit code if there are any matches.
