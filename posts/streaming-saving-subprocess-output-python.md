@@ -6,9 +6,11 @@ Sometimes, you want to run a subprocess with Python and stream/print its output
 live to the calling process' terminal, and at the same time save the output to a
 variable. Here's how:
 
-	proc = subprocess.Popen(cmd, stdout=subprocess.PIPE)
-	for line in proc.stdout:
-		sys.stdout.buffer.write(line)
-		sys.stdout.buffer.flush()
-		# do stuff with the line variable here
-	proc.wait()
+```python
+proc = subprocess.Popen(cmd, stdout=subprocess.PIPE)
+for line in proc.stdout:
+    sys.stdout.buffer.write(line)
+    sys.stdout.buffer.flush()
+    # do stuff with the line variable here
+proc.wait()
+```
