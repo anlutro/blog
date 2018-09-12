@@ -12,7 +12,7 @@ Here's an example Dockerfile using the official Python Docker images, which are 
 	RUN python3 -m venv /venv
 
 	# example of a development library package that needs to be installed
-	RUN apt-get update && apt-get install libldap2-dev && \
+	RUN apt-get -qy update && apt-get -qy install libldap2-dev && \
 	    rm -rf /var/cache/apt/* /var/lib/apt/lists/*
 
 	# install requirements separately to prevent pip from downloading and
@@ -36,7 +36,7 @@ Here's an example Dockerfile using the official Python Docker images, which are 
 	COPY --from=build /venv /venv
 
 	# install runtime libraries (different from development libraries!)
-	RUN apt-get update && apt-get install libldap-2.4-2 && \
+	RUN apt-get -qy update && apt-get -qy install libldap-2.4-2 && \
 	    rm -rf /var/cache/apt/* /var/lib/apt/lists/*
 
 	# remember to run python from the virtualenv
@@ -44,9 +44,9 @@ Here's an example Dockerfile using the official Python Docker images, which are 
 
 Copying the virtual environment is by far the easiest approach to this problem. Python purists will say that virtual environments shouldn't be copied, but when the underlying system is the same and the path is the same, it makes literally no difference (plus virtual environments are a dirty hack to begin with, one more dirty hack doesn't make a difference).
 
-There are alternate approaches such as downloading pypi packages or building dependencies as wheels and then copy those over, but it's more complicated and doesn't really have any benefits.
+There are a few alternate approaches, the most relevant of which is to build a wheel cache of your dependencies and mount that in as a volume. The problem with this is that Docker doesn't let you mount volumes in the build stage, so you have to make complex shell scripts and multiple Dockerfiles to make it work, and the only major advantage is that you don't always have to re-compile wheels (which should be on pypi anyway, and my dependencies don't change that often).
 
-In our example, we install both project dependencies *and* the project itself into the virtualenv. This means we don't even need the project root directory in the production image, which is also nice (no risk of leaking example configuration files, git history etc.).
+Another thing of note: In our example, we install both project dependencies *and* the project itself into the virtualenv. This means we don't even need the project root directory in the production image, which is also nice (no risk of leaking example configuration files, git history etc.).
 
 To build the image and run our project, assuming it's a webserver listening on port 5000, these commands should let you visit http://localhost:5000 in your browser:
 
