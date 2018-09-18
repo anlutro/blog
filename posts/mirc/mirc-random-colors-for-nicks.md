@@ -3,12 +3,12 @@ pubdate: 2012-06-25 12:00:00 +0100
 tags: mIRC
 public: false
 
-STEP 1: Press ALT+R in mIRC, click the variables tab and paste the following:
+Press <kbd>alt</kbd>+<kbd>R</kbd> in mIRC, click the variables tab and paste the following:
 
 	%colors 2 3 4 5 6 7 8 9 10 11 12 13 14 15
 	%currentcolor 2
 
-STEP 2: Click the remote tab and paste this:
+Click the remote tab and paste this:
 
 	on ^*:text:*:#:{
 	  if ($cnick($nick).color == $color(normal text)) { 
@@ -24,7 +24,7 @@ STEP 2: Click the remote tab and paste this:
 
 If you only want nick colors to apply for people in certain channels, replace # with a list of channels separated by a comma. Example:
 
-	on ^*:text:*:#raziel,#qlreddit:{
+	on ^*:text:*:#chan1,#chan2:{
 	  ...
 	}
 STEP 3: Press ALT+B in mIRC, click the nick colors tab and check "Enable nick colors"

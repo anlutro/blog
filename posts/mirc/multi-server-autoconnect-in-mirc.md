@@ -6,21 +6,20 @@ public: false
 Press alt+r and enter the following:
 
     on *:START:{
-      nick Raziel2p
-      anick Raziel2p`
-      emailaddr andreas@lutro.priv.no
-      fullname Andreas
+      nick mynick
+      anick mynick`
+      emailaddr me@example.com
+      fullname My Name
       server QuakeNet
-      server -m irc.dal.net
-      server -m EsperNet
+      server -m Freenode
     }
     on *:CONNECT:{
-      if ($network == QuakeNet) {
-        MSG Q@CServe.quakenet.org AUTH Raziel2p password
+      if ($network == OneNetwork) {
+        MSG Q@CServe.quakenet.org AUTH mynick password
         MODE $me +x
       }
-      elseif ($network == DalNET) {
-        nick Raziel
-        anick Raziel`
+      elseif ($network == Freenode) {
+        nick othernick
+        anick othernick`
       }
     }
