@@ -74,4 +74,4 @@ Note that you'll have to re-build the image any time code changes. I don't care 
 
 ### Example project
 
-If you want a functional example to play around with, I've got a git repository on Github with a sample Python project which has a docker-multistage branch: I've made a git repository following these steps, which you can clone and play around with: [python-project-examples](https://github.com/anlutro/python-project-examples/tree/docker-multistage)
+If you want a functional example to play around with, I've got a git repository on Github with a sample Python project which has a docker-multistage branch: [python-project-examples](https://github.com/anlutro/python-project-examples/tree/docker-multistage)
