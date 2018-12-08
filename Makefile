@@ -10,6 +10,7 @@ clean:
 	rm -rf dist/*
 
 assets:
+	mkdir -p dist
 	rsync -r assets/ dist/assets
 
 local: clean assets
