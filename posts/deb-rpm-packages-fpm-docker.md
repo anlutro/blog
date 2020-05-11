@@ -1,5 +1,6 @@
 # Building deb/rpm packages with FPM in Docker
 pubdate: 2019-12-17 18:23 CET
+tags: Packaging, Deployment, Docker
 
 Whether you're building on-premise software or just want to use packages as your atomic deployment mechanism of choice in a traditional bare-metal/VM infrastructure, deb/rpm packages are a nice thing to provide.
 
