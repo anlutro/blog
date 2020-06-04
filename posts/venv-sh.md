@@ -14,7 +14,7 @@ pip install --upgrade pip setuptools
 
 Now you're ready to install the project itself and its dependencies. Kind of verbose, though you do only have to run `source .venv/bin/activate` in the future - but if you forget whether you've created a virtual environment for a project (directory), it gets more tedious.
 
-Wanting a more ergonomic solution to this, I've worked on some shell functions which I've now put in a Github repository: [`venv.sh`](https://github.com/anluto/venv.sh).
+Wanting a more ergonomic solution to this, I've worked on some shell functions which I've now put in a Github repository: [`venv.sh`](https://github.com/anlutro/venv.sh).
 
 It allows me to just run the command `venv activate` (I've actually aliased it to `av` so even less typing), and it will activate a virtual environment if one is found in the current working directory, otherwise it will create it for you using the newest version of Python found on your system (only by default, of course).
 
