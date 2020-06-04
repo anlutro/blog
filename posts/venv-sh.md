@@ -1,4 +1,4 @@
-# `venv.sh` - sensible virtualenv workflow
+# venv.sh - sensible virtualenv workflow
 pubdate: 2020-06-04 22:36 CEST
 tags: Python
 
