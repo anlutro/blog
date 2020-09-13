@@ -1,2 +1,3 @@
+-c constraints.txt
 russell >= 0.6
 libsass >= 0.20
