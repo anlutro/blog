@@ -1,7 +1,7 @@
-run_cmd = .venv/bin/python ./run.py
-serve_cmd = .venv/bin/python ./serve.py
+gen_cmd = .venv/bin/russell generate
+serve_cmd = .venv/bin/russell serve
 rsync_dest = lutro.me:/var/www/lutro.me
-rsync_args = -rvc -e ssh ./dist/ --delete-after --filter='P assets/*'
+rsync_args = -rivc -e ssh ./dist/ --delete-after --filter='P assets/*'
 
 
 default: local
@@ -14,13 +14,13 @@ assets:
 	rsync -r assets/ dist/assets
 
 local: clean assets
-	$(run_cmd) --root-url="//localhost:8000"
+	$(gen_cmd) --root-url="//localhost:8000"
 
 serve:
 	$(serve_cmd)
 
 remote: clean assets
-	$(run_cmd) --root-url="//www.lutro.me"
+	$(gen_cmd) --root-url="//www.lutro.me"
 
 upload: remote
 	rsync $(rsync_args) $(rsync_dest)
