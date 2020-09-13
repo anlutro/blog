@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>{% block title %}{% endblock %} - {{ site_title }}</title>
-	<meta name="description" content="{% block description %}{{ site_description }}{% endblock %}">
+	<title>{% block title %}{% endblock %} - {{ site_title | e }}</title>
+	<meta name="description" content="{% block description %}{{ site_description | e }}{% endblock %}">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="alternate" type="application/rss+xml" href="{{ root_url }}/rss.xml" title="{{ site_title }} - RSS feed">
+	<link rel="alternate" type="application/rss+xml" href="{{ root_url }}/rss.xml" title="{{ site_title | e }} - RSS feed">
 	<link rel="stylesheet" href="{{ asset_url('style.css') }}">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400italic,600" rel="stylesheet" type="text/css">
 	<link rel="icon" href="data:;base64,=">

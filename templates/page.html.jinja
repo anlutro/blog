@@ -4,7 +4,7 @@
 
 {% block body_class %}single single-page{% endblock %}
 {% block title %}{{ page.title }}{% endblock %}
-{% block description %}{{ page.description }}{% endblock %}
+{% block description %}{{ page.description | e }}{% endblock %}
 {% block content %}
 
 	<article class="page">

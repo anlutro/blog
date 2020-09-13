@@ -4,7 +4,7 @@
 
 {% block body_class %}single single-post{% endblock %}
 {% block title %}{{ post.title }}{% endblock %}
-{% block description %}{{ post.description }}{% endblock %}
+{% block description %}{{ post.description | e }}{% endblock %}
 {% block content %}
 
 	<article class="post">
