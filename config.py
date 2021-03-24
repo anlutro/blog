@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-import argparse
 import os
 import os.path
 import logging
@@ -77,7 +76,12 @@ def generate():
     blog.generate_sitemap(https=True)
 
     blog.generate_rss(https=True, only_excerpt=False)
-    blog.write_file("robots.txt", "User-agent: *\nDisallow:\n")
+    blog.write_file("robots.txt", "\n".join([
+        "User-agent: *"
+        "Allow: /",
+        "",
+        "Sitemap: https://www.lutro.me/sitemap.xml"
+    ]))
 
 
 if __name__ == '__main__':
