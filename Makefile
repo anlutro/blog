@@ -1,11 +1,17 @@
-gen_cmd = .venv/bin/russell generate
-serve_cmd = .venv/bin/russell serve
-ghp_cmd = .venv/bin/ghp-import
+venv_path = .venv
+gen_cmd = ${venv_path}/bin/russell generate
+serve_cmd = ${venv_path}/bin/russell serve
+ghp_cmd = ${venv_path}/bin/ghp-import
 rsync_dest = lutro.me:/var/www/lutro.me
 rsync_args = -rivc -e ssh ./dist/ --delete-after --filter='P assets/*'
 
 
 default: local
+
+${venv_path}:
+	python -m venv ${venv_path}
+	${venv_path}/bin/pip install --upgrade pip setuptools
+	${venv_path}/bin/pip install -r requirements.txt -c constraints.txt
 
 clean:
 	rm -rf dist/*
@@ -14,16 +20,16 @@ assets:
 	mkdir -p dist
 	rsync -r assets/ dist/assets
 
-local: clean assets
+local: ${venv_path} clean assets
 	${gen_cmd} --root-url="//localhost:8000"
 
-serve:
+serve: ${venv_path}
 	${serve_cmd}
 
-remote: clean assets
+remote: ${venv_path} clean assets
 	${gen_cmd} --root-url="//www.lutro.me"
 
-github-pages:
+github-pages: ${venv_path} clean assets
 	${gen_cmd} --root-url="//anlutro.github.io"
 	${ghp_cmd} dist -m "auto-commit from command: make ghp-import" --push
 
