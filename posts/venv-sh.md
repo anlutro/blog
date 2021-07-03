@@ -1,5 +1,5 @@
 # venv.sh - sensible virtualenv workflow
-pubdate: 2020-06-04 22:36 CEST
+pubdate: 2020-06-04 22:36 +0200
 tags: Python
 
 Virtual environments can be kind of cryptic to people who haven't worked with Python for a while. I'd say that even for people that do work with Python, it can take a long time for it to "click". The short version is, you want one virtual environment for every Python project you work on, which, if you work on a lot of smaller projects, can get annoying.

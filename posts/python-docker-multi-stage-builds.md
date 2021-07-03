@@ -1,5 +1,5 @@
 # Multi-stage Docker builds for Python projects
-pubdate: 2018-08-06 21:34 CEST
+pubdate: 2018-08-06 21:34 +0200
 tags: Python, Docker
 
 Multi-stage builds can help reduce your Docker image sizes in production. This has many benefits: Development dependencies may potentially expose extra security holes in your system (I've yet to see this happen, but why not be cautious if it's easy to be so?), but mostly by reducing image size you make it faster for others to `docker pull` it.

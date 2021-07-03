@@ -1,5 +1,5 @@
 # Russell, revisited
-pubdate: 2017-09-12 18:58 CEST
+pubdate: 2017-09-12 18:58 +0200
 tags: Python
 
 3 years ago I wrote about [Russell](/posts/russell), a static site/blog generator I wrote. Since then, I've had a major rewrite of the project to make it easier to extend and configure.

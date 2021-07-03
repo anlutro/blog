@@ -1,5 +1,5 @@
 # Asking for help in public or private chat
-pubdate: 2020-05-10 19:42 CEST
+pubdate: 2020-05-10 19:42 +0200
 tags: Communication, Company culture
 
 Here's a pattern I've seen in multiple organizations: If someone is stuck with a problem, they guess who might know the solution to that problem and ask them privately, either in person or over chat (e.g. Slack). I always preferred to be asked over chat rather than in-person because it means I can postpone reading it for 5 minutes if I'm in the middle of something, and now with remote working being pretty much mandatory, the in-person option isn't even there any more.

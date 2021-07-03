@@ -1,5 +1,5 @@
 # Streaming and saving subprocess output at the same time in Python
-pubdate: 2018-04-13 21:18 CEST
+pubdate: 2018-04-13 21:18 +0200
 tags: Python
 
 Sometimes, you want to run a subprocess with Python and stream/print its output

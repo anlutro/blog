@@ -1,5 +1,5 @@
 # Better ways of managing pip dependencies
-pubdate: 2017-11-06 18:57 CET
+pubdate: 2017-11-06 18:57 +0100
 tags: Python, pip
 
 Of all the languages I've worked with, Python is one of the most annoying to work with when it comes to managing dependencies - only Go annoys me more. The industry standard is to keep a strict list of your dependencies (and their dependencies) in a `requirements.txt` file. Handily, this can be auto-generated with `pip freeze > requirements.txt`.
