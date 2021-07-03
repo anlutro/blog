@@ -25,7 +25,7 @@ remote: clean assets
 
 github-pages:
 	${gen_cmd} --root-url="//anlutro.github.io"
-	${ghp_cmd} -m "auto-commit from command: make ghp-import" dist
+	${ghp_cmd} dist -m "auto-commit from command: make ghp-import" --push
 
 upload: remote
 	rsync ${rsync_args} ${rsync_dest}
