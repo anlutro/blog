@@ -15,4 +15,6 @@ Looking into how to run this on an engineer's laptop as easily as in a CI/CD pip
 
 With all of the above fixed, you end up with a single Makefile target or shell script which would build the project's deb/rpm packages for me, either on my laptop or in the CI/CD system of my choice.
 
-I put together a complete example of how to build, run, and package an application using this system is available on Github: [fpm-docker-example](https://github.com/anlutro/fpm-docker-example)
+A complete example of how to build, run, and package an application using this system is available on Github: [fpm-docker-example](https://github.com/anlutro/fpm-docker-example)
+
+It has a few branches which are worth checking out: The default branch is a simple Golang example, but there's also a branch for Python applications, and one showing how the process can be simplified using [Earthly](https://earthly.dev).
