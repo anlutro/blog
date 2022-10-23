@@ -1,0 +1,6 @@
+/articles/* /posts/:splat
+/feeds/rss /rss.xml
+/ql/intro /quake-live-introduction
+/ql-intro /quake-live-introduction
+/ql-guide /quake-live-beginner-guide
+/cv https://docs.google.com/document/d/1pi-aC7vksFvcoBVbj5IZELW4Bmdck0z2COVkPYqB4pk/preview
