@@ -35,7 +35,7 @@ github-pages: ${venv_path} clean assets
 
 # when building in cloudflare, requirements/venv is managed by them
 cloudflare-pages: clean assets
-	${gen_cmd} --root-url="//lutrodotme.pages.dev"
+	russel --root-url="//lutrodotme.pages.dev"
 
 upload: remote
 	rsync ${rsync_args} ${rsync_dest}
