@@ -33,6 +33,9 @@ github-pages: ${venv_path} clean assets
 	${gen_cmd} --root-url="//anlutro.github.io"
 	${ghp_cmd} dist -m "auto-commit from command: make ghp-import" --push
 
+cloudflare-pages: ${venv_path} clean assets
+	${gen_cmd} --root-url="//lutrodotme.pages.dev"
+
 upload: remote
 	rsync ${rsync_args} ${rsync_dest}
 
