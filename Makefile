@@ -35,7 +35,7 @@ github-pages: ${venv_path} clean assets
 
 # when building in cloudflare, requirements/venv is managed by them
 cloudflare-pages: clean assets
-	russell generate --root-url="${CF_PAGES_URL}"
+	russell generate --root-url="//lutrodotme.pages.dev"
 	cp cloudflare-redirects dist/_redirects
 
 upload: remote
