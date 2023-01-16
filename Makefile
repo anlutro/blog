@@ -31,7 +31,7 @@ remote: ${venv_path} clean assets
 
 github-pages: ${venv_path} clean assets
 	${gen_cmd} --root-url="//anlutro.github.io"
-	${ghp_cmd} dist -m "auto-commit from command: make ghp-import" --push
+	${ghp_cmd} dist -m "auto-commit from command: make github-pages" --push
 
 # when building in cloudflare, requirements/venv is managed by them
 cloudflare-pages: clean assets
