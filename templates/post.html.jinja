@@ -1,5 +1,3 @@
-{% from 'macros.jinja' import disqus_comments %}
-
 {% extends 'layout.html.jinja' %}
 
 {% block body_class %}single single-post{% endblock %}
@@ -28,11 +26,5 @@
 			{% endif %}
 		</footer>
 	</article>
-
-{% if post.allow_comments %}
-	{{ disqus_comments(post) }}
-{% else %}
-<p class="comments_closed">Comments are closed for this post.</p>
-{% endif %}
 
 {% endblock %}

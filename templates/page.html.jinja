@@ -1,5 +1,3 @@
-{% from 'macros.jinja' import disqus_comments %}
-
 {% extends 'layout.html.jinja' %}
 
 {% block body_class %}single single-page{% endblock %}
@@ -20,9 +18,5 @@
 			{{ page.body }}
 		</div>
 	</article>
-
-{% if page.allow_comments %}
-	{{ disqus_comments(page) }}
-{% endif %}
 
 {% endblock %}
