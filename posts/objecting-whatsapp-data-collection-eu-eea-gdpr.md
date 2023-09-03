@@ -4,7 +4,7 @@ pubdate: 2023-09-03 16:35 CEST
 WhatApp (part of Meta) recently announced some privacy changes for EEA, in order to comply with EU laws.
 The long story short is that they're making it possible to opt out of a lot of data processing for privacy reasons, but are making it extremely difficult to do so.
 
-1. Go to [this page](https://www.whatsapp.com/contact/forms/382532939919295/)
+1. Go to [this page](https://www.whatsapp.com/contact/forms/382532939919295/) (which I found buried deep in their [privacy policy](https://www.whatsapp.com/legal/privacy-policy-eea#privacy-policy-how-to-exercise-your-rights) page)
 2. Select "How can I make an objection to the processing of my information?"
 3. You will receive an email with the subject "Data Subject Rights Form" asking which data you object to being used, and what your justification is. This email will be in your local language, but I see no reason why we shouldn't be able to reply to it in English.
 
