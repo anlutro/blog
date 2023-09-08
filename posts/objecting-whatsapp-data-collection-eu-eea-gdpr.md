@@ -1,5 +1,8 @@
 # Objecting to WhatsApp data collection in the EU / EEA on grounds of GDPR
 pubdate: 2023-09-03 16:35 CEST
+private: true
+
+> UPDATE: Note that I received a negative reply from Whatsapp, saying they think they do have legitimate reasons to collect said data.
 
 WhatApp (part of Meta) recently announced some privacy changes for EEA, in order to comply with EU laws.
 The long story short is that they're making it possible to opt out of a lot of data processing for privacy reasons, but are making it extremely difficult to do so.
