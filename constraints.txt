@@ -3,7 +3,7 @@ ghp-import==2.1.0
 Jinja2==2.11.3
 libsass==0.22.0
 lxml==5.2.2
-Markdown==3.6
+Markdown==3.4.4
 MarkupSafe==2.1.5
 python-dateutil==2.9.0.post0
 python-slugify==4.0.1
