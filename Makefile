@@ -18,8 +18,7 @@ clean:
 
 assets:
 	mkdir -p dist
-	ls -l .
-	rsync -r assets/ dist/assets
+	cp -r assets/ dist/
 
 local: ${venv_path} clean assets
 	${gen_cmd} --root-url="//localhost:8000"
