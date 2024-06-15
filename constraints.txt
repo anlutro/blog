@@ -4,7 +4,7 @@ Jinja2==2.11.3
 libsass==0.23.0
 lxml==5.2.2
 Markdown==3.6
-MarkupSafe==2.1.5
+MarkupSafe==2.0.1
 python-dateutil==2.9.0.post0
 python-slugify==4.0.1
 russell==0.6.0
