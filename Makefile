@@ -10,14 +10,15 @@ default: local
 
 ${venv_path}:
 	python -m venv ${venv_path}
-	${venv_path}/bin/pip install --upgrade pip setuptools
-	${venv_path}/bin/pip install -r requirements.txt -c constraints.txt
+	${venv_path}/bin/pip install --python-version=3.7 --upgrade pip setuptools
+	${venv_path}/bin/pip install --python-version=3.7 -r requirements.txt -c constraints.txt
 
 clean:
 	rm -rf dist/*
 
 assets:
 	mkdir -p dist
+	ls -l .
 	rsync -r assets/ dist/assets
 
 local: ${venv_path} clean assets
