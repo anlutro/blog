@@ -1,0 +1,8 @@
+[project]
+name = "lutrodotme"
+version = "1"
+requires-python = ">=3.13"
+dependencies = [
+	"russell ~= 0.7",
+	"libsass ~= 0.20",
+]
