@@ -1,5 +1,6 @@
 # Complex groups in Ansible using the constructed inventory plugin
 pubdate: 2022-03-11 17:57 +0100
+tags: Ansible
 
 If you ever start working with large, semi-heterogenous groups of VMs and want to manage them with Ansible, you quickly start running into problems trying to make it work with complex groups.
 

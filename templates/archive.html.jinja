@@ -14,6 +14,9 @@
 		</header>
 		<div class="post-body">
 			{{ post.excerpt }}
+			<p>
+				<a href="{{ root_url }}/posts/{{ post.slug }}">» Continue reading</a>
+			</p>
 		</div>
 		<footer class="post-footer">
 			{% if post.tags %}
