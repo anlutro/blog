@@ -1,6 +1,9 @@
 # PSM - Python Script Manager
 pubdate: 2020-05-20 23:20 +0200
 tags: Python
+private: true
+
+> I'm no longer maintaining this, I suggest you do what I do and use [`uv`](https://docs.astral.sh/uv/) instead!
 
 It's fairly common for generally useful CLI tools to be written in Python. Some examples off the top of my head are [ranger](https://github.com/ranger/ranger), [streamlink](https://github.com/streamlink/streamlink), [youtube-dl](https://ytdl-org.github.io/youtube-dl/index.html) and [glances](https://nicolargo.github.io/glances/).
 
